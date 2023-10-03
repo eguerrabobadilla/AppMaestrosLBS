@@ -1,0 +1,41 @@
+.row-1 {
+  display: flex;
+  padding-bottom: 30px;
+}
+.row-2 {
+  display: flex;
+}
+
+.card-usuarios-activos {
+  display: flex;
+  width: 75%;
+  height: 412px;
+  margin-right: 29px;
+  background: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+
+}
+
+.card-top-10 {
+  width: 25%;
+  height: 412px;
+  background: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+}
+.card-libros-descargados {
+  width: 50%;
+  height: 337px;
+  margin-right: 27px;
+  background: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+}
+.card-porcentaje {
+  width: 50%;
+  height: 337px;
+  background: #f5f5f5;
+  border-radius: 25px;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+}

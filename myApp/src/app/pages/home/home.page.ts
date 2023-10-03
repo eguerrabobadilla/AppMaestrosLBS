@@ -8,6 +8,8 @@ import { SecuenciasFsService } from 'src/app/services/secuencias-fs.service';
 
 import { EditorChangeContent, EditorChangeSelection, QuillEditorComponent } from 'ngx-quill';
 import { AlertController } from '@ionic/angular';
+import { NavigationEnd, Router } from '@angular/router';
+
 
 import { NgxJoditComponent } from 'ngx-jodit';
 
@@ -53,6 +55,45 @@ import { Config } from 'jodit/src/config';
                   this.checkImagesFromWord(data);
                 }, 50);
               }
+
+              const doc = document.querySelector('.jodit-wysiwyg');
+              const elementos = doc?.querySelectorAll('p.MsoNormal');
+              console.log('doc', doc);
+              console.log('elementos', elementos);
+
+              // Define el patrón de estilo que deseas buscar (margin con valores variables)
+              const patronEstilo = /margin:\s*0px 0px (\d+)px (-\d+)px/;
+
+              elementos?.forEach(function(element){
+
+                const estilo = element.getAttribute('style');
+
+                if (estilo) {
+                  // Verifica si el atributo "style" coincide con el patrón
+                  const coincidencia = estilo.match(patronEstilo);
+
+                  if (coincidencia) {
+                    // Obtiene los valores variables del margen y del cuarto atributo
+                    const valorDelMargen = coincidencia[1];
+                    const valorCuartoAtributo = coincidencia[2];
+
+                    // Reemplaza el estilo original eliminando los valores variables
+                    const nuevoEstilo = estilo.replace(
+                      patronEstilo,
+                      `margin: 0px 0px ${valorDelMargen}px;`
+                    );
+
+                    // Actualiza el atributo "style" del elemento con el nuevo estilo
+                    element.setAttribute('style', nuevoEstilo);
+                    console.log(`Elemento con estilo margin: 0px 0px ${valorDelMargen}px ${valorCuartoAtributo}px; :`, element);
+
+                  }
+                }
+
+                // }
+              });
+
+
 
               observer.disconnect();
               break;
@@ -141,21 +182,7 @@ import { Config } from 'jodit/src/config';
 
 	nombreLibro: string = '';
 
-	// quillModules = {
-	// 	'toolbar': [
-	// 		['bold', 'italic', 'underline', 'strike'],	// toggled buttons
-	// 		['blockquote', 'code-block'],
-	// 		[{'header': 1}, {'header': 2}],
-	// 		[{ 'size': ['small', false, 'large', 'huge'] }],	// custom button values
-	// 		[{ 'list': 'ordered' }, { 'list': 'bullet' }],
-	// 						// text direction
-	// 			// custom dropdown
-	// 		[{ 'color': [] }, { 'background': [] }],	// dropdown with defaults from theme
-	// 		[{ 'align': [] }],
-	// 		['link'],
-	// 	]
-	// };
-
+	rutaActual:string[] = [];
 
 	globalInstance: any;
   editorCreatd:any
@@ -179,13 +206,33 @@ import { Config } from 'jodit/src/config';
   @ViewChild(NgxJoditComponent, {read: ElementRef}) quilleditorSec: ElementRef;
 
   constructor(public dataService: DataService,
-	private authService: AuthService,
-	public toastService: ToastService, private elementRef: ElementRef, private renderer: Renderer2,
-	private alertController: AlertController, private secuenciasService: SecuenciasFsService, private zone: NgZone) { }
+		private authService: AuthService,
+		public toastService: ToastService, 
+		private elementRef: ElementRef, 
+		private renderer: Renderer2,
+		private alertController: AlertController, 
+		private secuenciasService: SecuenciasFsService,
+		private router: Router,
+		private zone: NgZone,
+	) { }
 
 	ngOnInit() {
+
+		  this.router.events.subscribe((event) => {
+			if (event instanceof NavigationEnd) {
+			  const ruta = event.urlAfterRedirects || '';
+			  this.dataService.rutaActual$.next(ruta);
+			}
+		  });
+	  
+		  this.dataService.rutaActual$.subscribe((ruta) => {
+			let rutaSinguion:string = ruta.replace(/-/g, ' ');
+			let rutaArray: string[] = rutaSinguion.split('/');
+			this.rutaActual = rutaArray;
+		  });
+
+		
 		this.dataService.locationsHome.subscribe((dataReceived: any) => {
-			console.log("[data received]: ", dataReceived);
 			const { type, args } = dataReceived;
 
 			if(type === 'pagina') {
@@ -242,6 +289,7 @@ import { Config } from 'jodit/src/config';
 
 		this.dataService.nombreLibroActual$.subscribe(nombre => this.nombreLibro = nombre);
 
+		
 
 	}
   ngAfterViewInit(): void {
@@ -256,11 +304,6 @@ import { Config } from 'jodit/src/config';
 		this.appPages[0].activo = true;
 		this.datosGenUsuario['iniciales'] = this.getTokenData('nombre').substring(0, 2);
 		this.datosGenUsuario['nombre'] = this.getTokenData('nombre');
-    setTimeout(() => {
-      this.initEditor();
-      console.log("enter")
-    }, 5000)
-
 	}
 
   checkImagesFromWord(data: string, ): any {
@@ -343,7 +386,6 @@ import { Config } from 'jodit/src/config';
 			}
 		};
 
-		console.log(sendDataLibro);
 		this.dataService.addRequerimiento(sendDataLibro);
 
 		this.toastService.show('Contenido guardado.', { classname: 'bg-success text-dark', delay: 3000});
@@ -398,7 +440,6 @@ import { Config } from 'jodit/src/config';
 	}
 
 	regresarInicio() {
-		console.log("regresar inicio");
 		const cerrarIframe  = false;
     this.value = '';
 		this.dataService.estadoModal = false;
@@ -423,9 +464,7 @@ import { Config } from 'jodit/src/config';
 		}
 
 		if(opcion === 'nuevo-robotica') this.dataService.abrirModalMain();
-
-		// console.log(this.quilleditorSec);
-		// console.log(this.quilleditorSec.nativeElement);
+		
 		//prevent drop event from other tabs
 		// this.renderer.listen(this.quilleditorSec.nativeElement, 'drop', (event) => {
 		// 	event.preventDefault();
@@ -474,22 +513,6 @@ import { Config } from 'jodit/src/config';
 
 }
 
-// export class AppComponent {
-//   public quill: Quill;
-
-//   private get tableModule(): BetterTableModule {
-//     return this.quill.getModule("better-table");
-//   }
-
-//   public editorCreated(event: Quill): void {
-//     this.quill = event;
-//     // Example on how to add new table to editor
-//     this.addNewtable();
-//   }
-
-//   private addNewtable(): void {
-//     this.tableModule.insertTable(3, 3);
-//   }
 
 
 
