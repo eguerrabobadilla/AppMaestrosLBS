@@ -1,0 +1,237 @@
+.container-principal {
+  position: relative;
+  margin-top: 10px;
+  overflow-y: auto;
+  height: 100%;
+  padding-right: 40px;
+}
+.card-lista-busqueda {
+  overflow-y: auto;
+  height: auto;
+  padding-right: 20px;
+  max-height: 306px;
+}
+.resultado-posicion {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+}
+.linea-resultado {
+  width: 140px;
+  border: 0.3px #373636 solid;
+  background: #373636;
+  margin-bottom: 9px;
+  margin-right: 26px;
+}
+
+.label-resultado {
+  text-align: end;
+  margin-right: 26px;
+}
+
+.label-input-select {
+  color: #606060;
+  font-size: 13px;
+  font-family: "Volte-bold";
+  font-weight: 700;
+  word-wrap: break-word;
+  margin-top: 35px;
+  margin-bottom: 3px;
+  margin-left: 18px;
+}
+
+.input-select {
+  width: 217px;
+  min-width: 217px;
+  height: 32px;
+  margin-right: 44px;
+  padding-left: 12px;
+  background: var(--ion-lbs-negro-gris);
+  border-radius: 16px;
+
+  color: white;
+  font-size: 13px;
+  font-family: "Volte-Regular";
+  font-weight: 400;
+  word-wrap: break-word;
+
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+
+  --placeholder-opacity: 1;
+}
+.option-select {
+  background-color: #606060;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+ion-searchbar {
+  color: white;
+  font-size: 16px;
+  font-family: Volte;
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-top: -14px;
+  min-width: 816px;
+
+  --border-radius: 16px;
+  --background: var(--ion-lbs-negro-gris);
+  --icon-color: var(--ion-color-lbs-lila);
+  --box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-busqueda {
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  min-width: 716px;
+  max-width: calc(100% - 400px);
+  background: #f5f5f5;
+  margin-left: 310px;
+  margin-top: 40px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+
+  ion-list.list-ios {
+    background: #f5f5f5;
+    --ion-item-background: #f5f5f5;
+  }
+
+  ion-item {
+    --background: #f5f5f5;
+  }
+}
+
+.card-loading-busqueda {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.row-select {
+  // width: 1325px;
+  width: 100%;
+  margin-bottom: 26px;
+  margin-top: 10px;
+  display: flex;
+}
+
+.container {
+  position: relative;
+  margin-left: 0px;
+  // width: 1055px;
+  width: 100%;
+  height: 728px;
+  border-radius: 15px;
+  background: var(--ion-lbs-negro-gris);
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.row {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0px;
+  width: 100%;
+  min-width: 1055px;
+  height: 100%;
+  z-index: 3;
+  padding: 0;
+  margin: 0;
+}
+
+.vertical-small {
+  width: 320px;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.vertical-large {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.informacion {
+  position: relative;
+  background: var(--ion-lbs-gris);
+  width: 265px;
+  height: 472px;
+  border-radius: 15px;
+  margin-top: 74px;
+  margin-left: 22px;
+  margin-right: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.horas {
+  width: 97px;
+  height: 70px;
+  border-radius: 15px;
+  margin-right: 18px;
+}
+.sesiones {
+  width: 97px;
+  height: 70px;
+  border-radius: 15px;
+}
+
+.docente {
+  color: var(--ion-lbs-negro-gris);
+  font-size: 13px;
+  font-family: Volte;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.nivel-entidad {
+  color: var(--ion-lbs-lila);
+  font-size: 13px;
+  font-family: Volte;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+.resumen {
+  position: relative;
+  background: var(--ion-lbs-gris);
+  width: 265px;
+  height: 135px;
+  border-radius: 15px;
+  margin-left: 22px;
+  margin-top: 14px;
+  margin-right: 32px;
+}
+
+.exportar-texto {
+  color: white;
+  font-size: 13px;
+  font-family: Volte;
+  font-weight: 500;
+  word-wrap: break-word;
+  text-decoration: underline;
+  margin-left: 6px;
+}
+.container-exportar {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 96px;
+}
+
+.icono-cerrar-busqueda {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  cursor: pointer;
+  width: 34px;
+}

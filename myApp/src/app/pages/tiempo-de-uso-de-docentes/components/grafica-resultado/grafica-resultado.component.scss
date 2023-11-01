@@ -1,0 +1,183 @@
+.container {
+  position: relative;
+  background: var(--ion-lbs-gris);
+  // width: 704px;
+  width: 100%;
+  min-width: 586px;
+  height: 546px;
+  max-height: 546px;
+  border-radius: 15px;
+  margin-top: 149px;
+  display: flex;
+  flex-direction: column;
+}
+.card-titulo {
+  min-width: 311px;
+  max-width: 311px;
+  height: 92px;
+  background: var(--ion-lbs-negro-gris);
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  div {
+    padding: 14px 28px 15px 19px;
+  }
+}
+
+.card-titulo::-webkit-scrollbar:horizontal {
+  height: 3px;
+}
+
+.tiempo-texto {
+  color: white;
+  font-size: 30px;
+  font-family: Volte;
+  font-weight: 500;
+  line-height: 30px;
+}
+.libro-nombre {
+  color: white;
+  font-size: 22px;
+  font-family: Volte;
+  font-weight: 700;
+  line-height: 28.44px;
+  margin-right: 28px;
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 30%;
+  margin-top: 29px;
+  margin-left: 41px;
+  margin-right: 35px;
+}
+.card-portada-libro {
+  width: 72px;
+  height: 92px;
+  background: #373636;
+  box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  margin-left: 17px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.portada {
+  width: 50px;
+  height: 75px;
+  margin: 8px 11px 9px 11px;
+}
+.datetime {
+  width: 162px;
+  height: 24px;
+  background: var(--ion-lbs-lila);
+  border-radius: 11.93px;
+  border: 1px var(--ion-lbs-lila) solid;
+  color: white;
+  padding-left: 12px;
+  margin-bottom: 15px;
+  margin-left: 65px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  &:active {
+    background-color: var(--ion-lbs-lila-oscuro);
+    transform: scale(0.95);
+  }
+  &:focus {
+    background-color: var(--ion-lbs-lila-oscuro);
+  }
+}
+ion-datetime {
+  position: absolute;
+  // top: 49px;
+  // right: -130px;
+  --background: white;
+  --ion-color-base: var(--ion-lbs-lila) !important;
+  // --background-rgb: 255, 241, 242;
+  z-index: 20;
+  border-radius: 7px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.dataTime-icon {
+  width: 18px;
+  padding-right: 9px;
+}
+.periodo-texto {
+  margin-left: 78px;
+  margin-bottom: 3px;
+  color: white;
+  font-size: 11px;
+  font-family: Volte;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.container-grafica {
+  width: 100%;
+  // width: 835px;
+  // height: 632px;
+}
+
+.grafica {
+  bottom: 49px;
+  border: 1px solid red;
+}
+
+
+
+.horas-de-uso {
+  position: absolute;
+  transform: rotate(-90deg);
+  color: white;
+  font-size: 15px;
+  font-family: Volte;
+  font-weight: 500;
+  word-wrap: break-word;
+  left: -40px;
+  top: 300px;
+  margin-left: 37px;
+}
+.dias {
+  margin-top: 11px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+  font-family: Volte;
+  font-weight: 500;
+}
+
+
+#c3-chart {
+  .c3-texts{
+    color: white !important;
+    background-color: white;
+  }
+  .c3-text{
+    color: white !important;
+    background-color: white;
+  }
+  .c3-xgrid-lines{
+    border-color: white !important;
+    color: white !important;
+  }
+  .c3-ygrid-lines{
+    border-color: white !important;
+    color: white !important;
+  }
+
+  .tick{
+    color: white !important;
+  }
+}

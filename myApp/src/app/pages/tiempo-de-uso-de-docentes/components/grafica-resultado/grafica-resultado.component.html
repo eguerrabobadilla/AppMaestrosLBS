@@ -1,0 +1,71 @@
+<div class="container">
+
+    <div class="header">
+        <div style="display: flex;">
+            <div class="card-titulo">
+                <div>
+                    <span class="tiempo-texto">
+                        Tiempo de uso de:
+                    </span>
+                    <span class="libro-nombre">
+                        {{LibroDocenteData.Nombre}}
+                    </span>
+                </div>
+            </div>
+            <div class="card-portada-libro">
+                <ion-spinner style="--color: white;" *ngIf="isLoading"></ion-spinner>
+                <img class="portada" 
+                    [src]="RutaPortada + LibroDocenteData.RutaThumbnails + '?t=' + tiempoReal" 
+                    alt="libro-portada"
+                    (load)="onImageLoad()">
+            </div>
+        </div>
+
+            <div>
+                <div class="periodo-texto">Periodo.</div>
+                
+                <div class="datetime" (click)="openDatetime('desde')">
+                    {{ (desdeLabel ==='') ?'Desde': desdeLabel }}
+                    <img *ngIf="desde" class="dataTime-icon" src="./assets/icon/dateTime-icon.svg" alt="dataTime-icon">
+                </div>
+
+                    <ion-datetime 
+                        *ngIf="desde" 
+                        presentation="date"
+                        [value]="desdeValue"
+                        (ionBlur)="this.desde = false"
+                        (ionChange)="onDesdeChange($any($event))">
+                    </ion-datetime>
+
+                <div class="datetime" (click)="openDatetime('hasta')">
+                    {{ (hastaLabel ==='') ?'Hasta': hastaLabel }}
+                    <img *ngIf="hasta" class="dataTime-icon" src="./assets/icon/dateTime-icon.svg" alt="dataTime-icon">
+                </div>
+                <ion-datetime 
+                    *ngIf="hasta" 
+                    presentation="date"
+                    [value]="hastaValue"
+                    (ionBlur)="this.hasta = false"
+                    (ionChange)="onHastaChange($any($event))">
+                </ion-datetime>
+
+            </div>
+        
+    </div>
+
+    <div style="display: flex; flex-direction: row; width: 100%; height: 100%; ">
+
+            <div class="horas-de-uso">
+                Horas de Uso
+            </div>
+            
+            <div style="position: absolute; display: flex; flex-direction: column; width: 100%; height: 100%;">
+                <canvas style="min-height: 350px; max-height: 350px; max-width: 1200px;margin-left: 64px; margin-right: 75px;" id="TiempoDeUsoDeDocentes"></canvas>
+                <div class="dias" style="height: 49px;">
+                    Días
+                </div> 
+            </div>
+    </div>
+
+    
+  </div>
