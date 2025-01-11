@@ -1,0 +1,20 @@
+<ion-card class="stats-widget">
+    <ion-card-header>
+      <div class="title"><strong>Horas de uso por campus.</strong>
+        <div class="btns-container">
+          <btn-exportar></btn-exportar>
+          <ion-button slot="end" class="stats-btn black-btn" aria-label="Favorite" shape="round"> 
+              <ion-icon name="filter-outline" aria-hidden="true"></ion-icon>
+              <ion-icon slot="end" name="chevron-down-outline" aria-hidden="true"></ion-icon>
+          </ion-button> 
+        </div>
+      </div>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
+    </ion-card-content>
+    <btn-ver-mas style="padding-left: 4vw;"></btn-ver-mas>
+  </ion-card>

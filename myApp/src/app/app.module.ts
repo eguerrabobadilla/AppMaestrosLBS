@@ -19,6 +19,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
+import { DataTablesModule } from "angular-datatables";
 
 //import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -37,6 +38,7 @@ import { AppComponent } from './app.component';
 	AngularFireModule.initializeApp(environment.firebase),
 	AngularFirestoreModule,
 	AngularFireFunctionsModule,
+	DataTablesModule,
 	//NgbToastModule
 
 	//QuillModule.forRoot(),

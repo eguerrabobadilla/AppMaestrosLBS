@@ -1,0 +1,45 @@
+
+.title {
+    font-family: "Volte-Bold";
+    text-align: center;
+    color: #606060;
+    font-size: xxx-large;
+}
+
+.subtitle {
+    font-family: "Volte-Medium";
+    text-align: center;
+    color: #704CEB;
+    font-size: medium
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+}
+
+.btns-container {
+  position: relative;
+  bottom: 5px;
+  margin-left: auto;
+}
+
+ion-grid {
+    --ion-grid-columns: 3;
+
+  }
+
+ion-col {
+    border: solid 1px #704CEB;
+    color: #606060;
+    text-align: center;
+    font-family: "Volte-Medium";
+    outline: 1px solid #704CEB;
+  }
+
+ion-row {
+    // border: solid 1px #704CEB;
+    color: #606060;
+    text-align: center;
+    font-family: "Volte-Medium";
+  }

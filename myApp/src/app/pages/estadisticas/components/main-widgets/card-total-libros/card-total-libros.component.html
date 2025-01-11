@@ -1,0 +1,30 @@
+<ion-card class="stats-widget">
+  <ion-card-header>
+    <ion-card-title>
+      <div class="title">{{totalLibros}}</div>
+      <div class="subtitle">Total de libros</div>
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-grid class="total-libros" [fixed]="true">
+      
+        <ion-row *ngFor="let item of totalLibrosObj">
+          <ion-col size="2">
+            <ion-text>{{item.Escolaridad}}</ion-text>
+          </ion-col>
+          <ion-col size="1">
+            <ion-text>{{item.CantidadLibros}}</ion-text>
+          </ion-col>
+        </ion-row>
+      
+    </ion-grid>
+  </ion-card-content>
+
+  <div class="footer">
+    <div class="btns-container">
+      <btn-exportar></btn-exportar>
+      <btn-ver-mas></btn-ver-mas>
+    </div>
+  </div>
+</ion-card>

@@ -367,3 +367,32 @@ body {
     border-radius: 50px !important;
 }
 
+/** Estadisticas */
+
+ion-button.stats-btn {
+    --color: #fff;
+    font-family: 'Volte-Regular';
+    text-transform: unset;
+    font-size: 12px;
+    --padding-end: 15px;
+    --padding-start: 15px;
+    padding-right: 1vw;
+}
+
+ion-button.purple-btn {
+    --background: #714ceb;
+    --background-activated: #4524b2;
+
+  }
+
+ion-button.black-btn {
+    --background: #373636;
+    --background-activated: #363535;
+}
+
+ion-card.stats-widget{
+    height: 100%;
+    --background: #F5F5F5;
+    box-shadow: 8px 8px 15px 0px #00000026;
+    
+  }

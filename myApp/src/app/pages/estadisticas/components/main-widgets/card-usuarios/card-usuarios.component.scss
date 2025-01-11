@@ -1,0 +1,50 @@
+.title {
+  font-family: "Volte-Bold";
+  text-align: center;
+  color: #606060;
+  font-size: xxx-large;
+}
+
+.subtitle {
+  font-family: "Volte-Medium";
+  text-align: center;
+  color: #704CEB;
+  font-size: medium;
+}
+
+.porcentajes {
+  font-family: "Volte-Bold";
+  text-align: center;
+  color: #704CEB;
+  font-size: medium;
+  text-decoration-line: underline;
+}
+
+.totales {
+  font-family: "Volte-Medium";
+  text-align: center;
+  color: #606060;
+  font-size: xx-large
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+}
+
+.btns-container {
+  position: relative;
+  bottom: 5px;
+  margin-left: auto;
+}
+
+ion-col {
+  color: #606060;
+  text-align: center;
+  font-family: "Volte-Medium";
+}
+
+ion-grid {
+  --ion-grid-columns: 2;
+
+}

@@ -16,20 +16,10 @@ export class menuComponent   {
       ) { }
 
 
-  navigateToLibros(){
+  navigateToRoute(route: string){
     this.dataService.reiniciarNombreLibro('');
-    this.dataService.rutaActual$.next('/home/libros');
-    this.router.navigate(['/home/libros']);
-  }
-  navigateToSecuencias(){
-    this.dataService.reiniciarNombreLibro('');
-    this.dataService.rutaActual$.next('/home/secuencias');
-    this.router.navigate(['/home/secuencias']);
-  }
-  navigateToEstadisticas(){
-    this.dataService.reiniciarNombreLibro('');
-    this.dataService.rutaActual$.next('/home/estadisticas');
-    this.router.navigate(['/home/estadisticas']);
+    this.dataService.rutaActual$.next('/home/'+route);
+    this.router.navigate(['/home/'+route]);
   }
 
 }

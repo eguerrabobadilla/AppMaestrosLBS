@@ -1,0 +1,78 @@
+<ion-card class="stats-widget">
+  <ion-card-header>
+    <ion-card-title>
+      <div class="title"><strong>Top Campus.</strong>
+        <div class="btns-container">
+          <ion-input class="search"
+          id="myInputTextField"  
+          placeholder="Buscar..."
+          fill="solid"
+          (ionInput)="onSearch($event)"
+          >
+           <ion-icon class="search-icon" slot="start" name="search-outline" aria-hidden="true"></ion-icon>
+          </ion-input>
+        </div>
+      </div>
+    </ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content class="table-container">
+    <table id="topCampus" datatable [dtOptions]="dtOptions" class="row-border hover">
+      <thead style="color: #704CEB;">
+        <tr>
+          <th class="txt-center">Campus</th>
+          <th class="txt-center">Horas de uso</th>
+          <th class="txt-center">Libro más utilizado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let campus of CampusTops; index as i">
+          <!-- <td class="txt-center txt-top">{{ campus.Campus }}</td> -->
+          <td class="txt-center txt-top">
+            <div class="index">
+              {{i+1}}
+              <ion-button class="stats-btn black-btn index-campus-btn" aria-label="Favorite" shape="round"> 
+                <ion-icon slot="end" name="chevron-forward-circle" aria-hidden="true"></ion-icon>
+                {{ campus.Campus }}
+              </ion-button> 
+            </div>
+          </td>
+          <td class="txt-center txt-top">{{ campus.Horas }} Horas</td>
+          <td>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="libro-info-container">
+                    <div>
+                      <div class="libro-nombre">
+                        1. {{ campus.Libro }}.
+                      </div>
+                      <div class="libro-escolaridad">
+                        {{campus.GradoLibro}} {{campus.EscolaridadLibro}}
+                      </div>
+                    </div>
+                    <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'"></btn-ver-mas>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <img class="libro-portada" src={{campus.PortadaLibro}}>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-card-content>
+
+  <div class="footer">
+    <div class="btns-container">
+      <btn-exportar></btn-exportar>
+      <!-- <ion-button aria-label="Favorite" shape="round"> 
+        <ion-icon slot="end" name="chevron-forward-circle" aria-hidden="true"></ion-icon>
+        Ver más
+      </ion-button>  -->
+    </div>
+  </div>
+
+</ion-card>

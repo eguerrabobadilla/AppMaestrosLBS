@@ -1,0 +1,152 @@
+.title {
+  font-family: "Volte-Medium";
+  color: #704CEB;
+  font-size: x-large;
+  display: flex;
+  width: 100%;
+  padding-left: 1vw;
+}
+
+.subtitle {
+  font-family: "Volte-Medium";
+  text-align: center;
+  color: #704CEB;
+  font-size: medium;
+}
+
+.porcentajes {
+  font-family: "Volte-Bold";
+  text-align: center;
+  color: #704CEB;
+  font-size: medium;
+  text-decoration-line: underline;
+}
+
+.totales {
+  font-family: "Volte-Medium";
+  text-align: center;
+  color: #606060;
+  font-size: xx-large
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  margin-top: 2vh;
+}
+
+.btns-container {
+  position: relative;
+  bottom: 5px;
+  margin-left: auto;
+}
+
+.table-container {
+  height: 45vh;
+  overflow-y: scroll;
+}
+
+thead, tbody, tfoot, tr, td, th {
+  border: outset;
+  border-color: #704ceb;
+  
+}
+
+.txt-center {
+  text-align: center !important;
+}
+
+.txt-top {
+  vertical-align: text-top;
+  padding-top: 15px;
+}
+
+.index {
+  font-family: 'Volte-Bold';
+  font-size: large;
+  color: #704CEB;
+  display: flex;
+  width: 100%;
+}
+
+.index-campus-btn {
+  position: relative;
+  bottom: 10px;
+  margin-left: auto;
+  width: 80%;
+}
+
+.libro-info-container {
+  height: 100%;
+  display: grid;
+}
+
+.libro-nombre {
+  font-family: 'Volte-Bold';
+  color: #606060;
+  text-align: left;
+}
+
+.libro-escolaridad {
+  font-size: small;
+  color: #704CEB;
+  text-align: left;
+}
+
+.libro-portada {
+  border-radius: 15px;
+}
+
+.libro-ver-mas-btn {
+  padding-right: 0 !important;
+  margin-top: auto;
+  width: 80%;
+}
+
+ion-col {
+  color: #606060;
+  text-align: center;
+  font-family: "Volte-Medium";
+}
+
+ion-grid {
+  --ion-grid-columns: 2;
+
+}
+
+ion-input.search {
+  --background: #373636;
+  --color: #fff;
+  --placeholder-color: #ddd;
+  --placeholder-opacity: 1;
+  border-radius: 25px;
+  font-family: 'Volte-Regular';
+  text-transform: unset;
+  font-size: small;
+  // --padding-end: 15px;
+  --padding-start: 15px;
+  padding-right: 1vw;
+}
+
+ion-icon.search-icon {
+  position: inherit;
+  left: 10px;
+}
+
+// ::ng-deep .table-container  {
+//   div > div > input{
+//    background: #373636 !important;
+//    border-radius: 16px !important;
+// }
+
+::ng-deep .row-border  {
+  colgroup >  col:nth-child(2) {
+   width: 10vw !important;
+  }
+}
+
+//   // div > div > label{
+//   //  display: none;
+//   // } 
+// }
+

@@ -1,0 +1,25 @@
+.title {
+    font-family: "Volte-Medium";
+    color: #704ceb;
+    font-size: x-large;
+    display: flex;
+    width: 100%;
+    padding-left: 1vw;
+  }
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  // height: 30vh;
+  max-height: 50vh;
+  min-height: 25vh;
+}
+
+.btns-container {
+  position: relative;
+  bottom: 5px;
+  margin-left: auto;
+}
+
+
+

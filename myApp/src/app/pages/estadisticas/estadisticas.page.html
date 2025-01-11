@@ -1,31 +1,33 @@
-<ion-row style="width: 100%; height: 100%; padding: 20px;">
-    <ion-col size="12" >
-        
-        <div class="row-1">
-            
-            <div class="card-usuarios-activos">
+<ion-content>
+    <h1 style="font-family: Volte-Regular; color: #704CEB; margin-top: 25px;">Estadisticas: <strong style="font-family: Volte-Bold;">General.</strong></h1>
+    
+    <ion-grid>
+        <ion-row>
+            <ion-col size="8">
+                <!-- Hora de uso de por campus -->
+                    <card-hora-uso-campus></card-hora-uso-campus>
+    
+            </ion-col>
+            <ion-col size="4">
+                <!-- Total de libros -->
+                    <card-total-libros></card-total-libros>
+                 
+            </ion-col>
+        </ion-row>
+        <ion-row >
+            <ion-col size="8">
+                <!-- Top Campus -->
+                <card-top-campus></card-top-campus>
+    
+            </ion-col>
+            <ion-col size="4">
+                <!-- Usuarios -->
                 <card-usuarios></card-usuarios>
-            </div>
-            
-            <div class="card-top-10">
-            </div>
-        </div>
-        
-        <div class="row-2">
-            
-            <div class="card-libros-descargados" >
-                <card-libros-descargados></card-libros-descargados>
-            </div>
-            
-            <div class="card-porcentaje">
-                
-            </div>
-        </div>
-        
-        
-        
-    </ion-col>
-</ion-row>
+    
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
 
 
 
