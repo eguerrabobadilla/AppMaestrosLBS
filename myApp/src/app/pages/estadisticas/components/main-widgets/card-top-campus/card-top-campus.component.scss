@@ -95,12 +95,22 @@ thead, tbody, tfoot, tr, td, th {
 
 .libro-portada {
   border-radius: 15px;
+  min-height: 10vh;
+  max-height: 20vh;
+  min-width: 5vw;
 }
 
 .libro-ver-mas-btn {
   padding-right: 0 !important;
   margin-top: auto;
   width: 80%;
+}
+
+.show {
+  display: block;
+}
+.hide {
+  display: none;
 }
 
 ion-col {

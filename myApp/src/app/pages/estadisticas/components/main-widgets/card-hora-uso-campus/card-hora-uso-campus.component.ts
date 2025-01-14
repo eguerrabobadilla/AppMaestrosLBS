@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonCard, IonCol } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
 
 declare var Chart: any;
@@ -12,6 +13,12 @@ declare var Chart: any;
 
 export class cardHoraUsoCampusComponent implements OnInit { 
 
+
+  // @ViewChild('horasUsoCard') cardHoraUso: ElementRef<IonCard>;
+  @ViewChild('horasUsoCard') cardHoraUso: ElementRef<HTMLDivElement>;
+  @Input() horasUsoCampusCol!: IonCol;
+  @Output() verMasEvent = new EventEmitter<void>();
+  
     constructor() {
 
     }
@@ -105,4 +112,9 @@ export class cardHoraUsoCampusComponent implements OnInit {
           }
         });
     }
+
+    verMas() {
+      this.verMasEvent.emit();
+    }
+
 }

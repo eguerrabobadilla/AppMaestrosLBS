@@ -1,4 +1,4 @@
-<ion-card class="stats-widget">
+<ion-card #horasUsoCard class="stats-widget">
     <ion-card-header>
       <div class="title"><strong>Horas de uso por campus.</strong>
         <div class="btns-container">
@@ -16,5 +16,5 @@
         <canvas id="myChart"></canvas>
       </div>
     </ion-card-content>
-    <btn-ver-mas style="padding-left: 4vw;"></btn-ver-mas>
+    <btn-ver-mas style="padding-left: 4vw;" (click)="verMas()" ></btn-ver-mas>
   </ion-card>

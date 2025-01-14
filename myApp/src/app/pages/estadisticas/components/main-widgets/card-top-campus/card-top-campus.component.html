@@ -22,12 +22,13 @@
         <tr>
           <th class="txt-center">Campus</th>
           <th class="txt-center">Horas de uso</th>
+          <th class="txt-center">Usuarios</th>
           <th class="txt-center">Libro más utilizado</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let campus of CampusTops; index as i">
-          <!-- <td class="txt-center txt-top">{{ campus.Campus }}</td> -->
+          <!-- CAMPUS -->
           <td class="txt-center txt-top">
             <div class="index">
               {{i+1}}
@@ -37,7 +38,14 @@
               </ion-button> 
             </div>
           </td>
+
+           <!-- HORAS -->
           <td class="txt-center txt-top">{{ campus.Horas }} Horas</td>
+
+           <!-- USUARIOS  -->
+          <td class="txt-center txt-top">{{ campus.Usuarios }} Usuarios</td>
+
+           <!-- LIBRO -->
           <td>
             <ion-grid>
               <ion-row>

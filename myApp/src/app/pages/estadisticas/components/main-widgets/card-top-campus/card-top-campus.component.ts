@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -69,8 +69,53 @@ export class cardTopCampusComponent implements OnDestroy, OnInit {
       const esto = this;
       $(document).ready( function () {
         esto.oTable = $('#topCampus').DataTable({
-          "dom": 't'
+          "dom": 't',    
+          "responsive": true,
+          columnDefs: [
+            {
+                targets: 2,
+                name: "usuarios",
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: 1,
+                searchable: false
+            }
+        ]
+          // "columns": [
+          //   { "data": "Campus" },
+          //   { "data": "Horas de uso" },
+          //   { "data": "das" },
+          //   { "data": "Libro más utilizado" },
+
+            // { 
+            //   "data": "null",
+            //   "name": "buttonColumn",
+            //   "render": function (data, type, row) {
+          
+            //       return '<div class="txt-center txt-top">'+campus.Usuarios+' Usuarios</div>';
+            //   }
+            // },
+            
+          // ],
+          
+          // "initComplete": function (settings, json) {
+          //   // get instance of datatable
+          //   let table = settings.oInstance.api();                            
+          //   // get column using its name and set visibility
+          //   table.column('buttonColumn:name').visible(esto.extraInfo);
+          // } 
+          
+
         });
+
+        // - Intentar hacer lo de abajo con un emmit event 
+        // if (esto.extraInfo) {
+
+        //   $('#topCampus thead tr').append('<th>Add Extra</th>')
+      
+        // } 
       });
 
       // Cuando me suscriba para obtener la información, usar el trigger para pintar la tabla
@@ -81,6 +126,10 @@ export class cardTopCampusComponent implements OnDestroy, OnInit {
     onSearch(event: any) {
       const searchValue = event.target.value || '';
       this.oTable.search(searchValue).draw();
+    }
+
+    triggerUpdate(value: boolean) {
+      this.oTable.column('usuarios:name').visible(value);
     }
 
     ngOnDestroy(): void {
