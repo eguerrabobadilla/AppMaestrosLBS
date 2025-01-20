@@ -1,0 +1,126 @@
+<ion-content>
+    <ion-card class="stats-widget" style="height: auto !important;">
+      <ion-card-header>
+        <ion-card-title>
+          
+          <div class="header">
+            <div class="btns-container-left">
+              <btn-back class="btn-back"></btn-back>
+              <h1 *ngIf="type == 'campus'" class="title">Libros: <strong style="font-family: Volte-Bold;">Campus Durango.</strong></h1>
+              <h1 *ngIf="type == 'general'" class="title">Libros: <strong style="font-family: Volte-Bold;">General.</strong></h1>
+            </div>
+           
+            <div class="btns-container-right">
+              <btn-exportar style="margin-top: auto;"></btn-exportar>
+              <ion-input 
+              class="search"
+              id="myInputTextField"  
+              placeholder="Buscar..."
+              fill="solid"
+              size="small"
+              >
+                <ion-icon class="search-icon" slot="start" name="search-outline" aria-hidden="true"></ion-icon>
+              </ion-input>
+
+            </div>
+          </div>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+
+
+        <ion-grid>
+            <!-- DATATABLES -->
+            <ion-row>
+
+                <!-- DT ALUMNOS -->
+                <ion-col>
+                    <table id="tableAlumnos" datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead class="table-head">
+                          <tr>
+                            <th class="txt-center">Escolaridad</th>
+                            <th class="txt-center">Alumnos</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let alumnos of dataAlumnos; index as i">
+                            <!-- CAMPUS -->
+                            <td class="txt-center txt-top">
+                              <div class="escolaridad">
+                                <strong>{{alumnos.Escolaridad}}</strong>
+                              </div>
+                            </td>
+                            <td class="txt-center txt-top">
+                              <div class="cantidad">
+                                {{alumnos.Cantidad}}
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </ion-col>
+
+                <!-- DT PROFESORES -->
+                <ion-col>
+                    <table id="tableProfesores" datatable [dtOptions]="dtOptions" class="row-border hover">
+                        <thead class="table-head">
+                          <tr>
+                            <th class="txt-center">Escolaridad</th>
+                            <th class="txt-center">Profesores</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let profesores of dataProfesores; index as i">
+                            <!-- CAMPUS -->
+                            <td class="txt-center txt-top">
+                              <div class="escolaridad">
+                                <strong>{{profesores.Escolaridad}}</strong>
+                              </div>
+                            </td>
+                            <td class="txt-center txt-top">
+                              <div class="cantidad">
+                                {{profesores.Cantidad}}
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </ion-col>
+            </ion-row>
+
+            <!-- CHARTS -->
+            <ion-row style="margin: 5vh;" class="ion-justify-content-between">
+                
+                <!-- ALUMNOS -->
+                <ion-col size="auto">
+                  <div>
+                      <div class="texto-porcentaje grafica-porcentaje">{{porcentajeAlumnos}}%</div>
+                      <canvas id="porcentajeAlumnos" class="grafica-porcentaje"></canvas>
+                    </div>
+                </ion-col >
+                <ion-col class="usuarios-container" size="2">
+                  <div>
+                      <div class="usuarios-total">{{totalAlumnos}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+                      <div class="usuarios-tipo">Alumnos</div>
+                  </div>
+                </ion-col>
+
+                <!-- PROFESORES -->
+                <ion-col size="auto">
+                    <div style="width: 200px;">
+                        <div class="texto-porcentaje grafica-porcentaje">{{porcentajeProfesores}}%</div>
+                        <canvas id="porcentajeProfesores" class="grafica-porcentaje"></canvas>
+                      </div>
+                </ion-col>
+                <ion-col class="usuarios-container" size="2">
+                    <div>
+                        <div class="usuarios-total">{{totalProfesores}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+                        <div class="usuarios-tipo">Profesores</div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+</ion-content>

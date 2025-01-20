@@ -384,6 +384,11 @@ ion-button.purple-btn {
     --background-activated: #4524b2;
 
   }
+ion-button.white-btn {
+    --background: #fff;
+    --background-activated: #4524b2;
+    --color: #714ceb !important; 
+  }
 
 ion-button.black-btn {
     --background: #373636;

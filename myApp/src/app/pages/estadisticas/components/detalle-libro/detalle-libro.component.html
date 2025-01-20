@@ -1,0 +1,123 @@
+<ion-content>
+  <ion-card class="stats-widget" style="height: auto !important;">
+    <ion-card-header>
+      <ion-card-title>
+        <div class="title">
+          <div class="btns-container-left">
+            <btn-back></btn-back>
+          </div>
+          <div class="btns-container-right">
+            <btn-exportar></btn-exportar>
+            <ion-input class="search"
+            id="myInputTextField"  
+            placeholder="Buscar..."
+            fill="solid"
+            >
+              <ion-icon class="search-icon" slot="start" name="search-outline" aria-hidden="true"></ion-icon>
+            </ion-input>
+          </div>
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content class="table-container">
+      
+      <ion-grid>
+        <ion-row>
+          <!-- portada -->
+          <ion-col size="4">
+            <img class="libro-portada" src={{libro.PortadaLibro}}>
+          </ion-col>
+
+          <!-- info libro -->
+          <ion-col size="7" offset="1">
+            <ion-grid>
+              <ion-row class="info-row">
+                <ion-col size="10">
+                  <span class="title-content"><strong>{{libro.Libro}}.</strong></span>
+                  <p>
+                    <span class="purple-txt">Campus: </span>
+                    <span class="grey-txt"><strong>{{libro.Campus}}.</strong></span>
+                    <br>
+                    <span class="purple-txt">Grado: </span>
+                    <span class="grey-txt"><strong>{{libro.GradoLibro}}.</strong></span>
+                    <br>
+                    <span class="purple-txt">Escolaridad: </span>
+                    <span class="grey-txt"><strong>{{libro.EscolaridadLibro}}.</strong></span>             
+                  </p>
+                </ion-col>
+
+                <!-- RANKING -->
+                <ion-col size="2" style="justify-items: center">
+                  <div class="ranking">
+                    <strong>
+                      {{libro.Ranking}}°
+                    </strong>
+                  </div>
+                  <div>
+                    <p style="text-align: center;">
+                      <span class="purple-txt" style="font-size: x-small;">
+                        # entre los más utilizados
+                      </span>
+                    </p>
+                  </div>
+                </ion-col>
+              </ion-row>
+
+              <!-- info stats -->
+              <ion-row class="info-row">
+                <ion-col>
+                  <p class="grey-txt stats-libro">
+                    <span>{{libro.Usuarios}}  Usuarios asignados.</span> 
+                    <br>
+                    <span>{{libro.DescargasLibro}}  Descargas.</span>
+                    <br>
+                    <span>{{libro.Horas}}  Horas de uso.</span>
+                  </p>
+                </ion-col>
+              </ion-row>
+
+              <!-- Valor de uso -->
+              <ion-row class="info-row">
+                <ion-col size="5">
+                  <div>
+                    <div class="texto-porcentaje grafica-porcentaje">{{porcentajeUso}}%</div>
+                    <canvas id="porcentajeDeUso" class="grafica-porcentaje"></canvas>
+                  </div>
+                </ion-col>
+
+                <ion-col size="5">
+                  <p class="valor-de-uso">
+                    <span class="grey-txt" style="font-size: xx-small;">El valor de uso se calcula en función de la cantidad de alumnos asignados y las descargas registradas en el momento de la consulta.
+                    </span> 
+                    <br>
+                    <br>
+                    <span class="grey-txt" style="font-size: x-large;">Valor de uso:</span>
+                    <br>
+                    <span class="grey-txt" style="font-size: xx-large;"><strong>{{valorDeUsoTxt}}</strong></span>
+                  </p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+      <!--  FOOTER -->
+      <div class="footer">
+
+        <div>
+          <ion-button class="stats-btn white-btn" style="font-family: 'Volte-Medium' !important;" aria-label="Favorite" shape="round"> 
+            <ion-icon slot="end" name="book-outline" aria-hidden="true"></ion-icon>
+            Abrir libro
+        </ion-button> 
+        </div>
+
+        <div class="logo-footer">
+          <img src="./assets/icon/logo_lbs_gris.svg" alt="LBS+" role="presentation">
+        </div>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

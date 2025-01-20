@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { EstadisticasPage } from './../../../estadisticas.page';
 
 @Component({
     selector: 'card-usuarios',
@@ -8,7 +9,13 @@ import { Router } from '@angular/router';
 })
 
 export class cardUsuariosComponent implements OnInit {
-    constructor(private router: Router) { }
+    constructor(
+        
+        private router: Router,
+        public EstadisticasPage: EstadisticasPage
+    ) { }
+
+    @Output() verMasEvent = new EventEmitter<void>();
 
     totalUsuarios: number;
     totalAlumnos: number;
@@ -26,7 +33,10 @@ export class cardUsuariosComponent implements OnInit {
         this.porcentajeAlumnos = Math.round((this.totalAlumnos / this.totalUsuarios) * 100);
         this.porcentajeProfesores = Math.round((this.totalProfesores / this.totalUsuarios) * 100);
 
-          
+    }
+
+    verMas() {
+        this.verMasEvent.emit();
     }
 
   

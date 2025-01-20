@@ -32,7 +32,7 @@
           <td class="txt-center txt-top">
             <div class="index">
               {{i+1}}
-              <ion-button class="stats-btn black-btn index-campus-btn" aria-label="Favorite" shape="round"> 
+              <ion-button class="stats-btn black-btn index-campus-btn" aria-label="Favorite" shape="round" (click)="EstadisticasPage.navigateToRoute('estadisticas-campus')"> 
                 <ion-icon slot="end" name="chevron-forward-circle" aria-hidden="true"></ion-icon>
                 {{ campus.Campus }}
               </ion-button> 
@@ -59,7 +59,7 @@
                         {{campus.GradoLibro}} {{campus.EscolaridadLibro}}
                       </div>
                     </div>
-                    <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'"></btn-ver-mas>
+                    <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas>
                   </div>
                 </ion-col>
                 <ion-col>

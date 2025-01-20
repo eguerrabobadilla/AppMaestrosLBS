@@ -1,6 +1,8 @@
 <ion-card #horasUsoCard class="stats-widget">
     <ion-card-header>
-      <div class="title"><strong>Horas de uso por campus.</strong>
+      <div class="title">
+        <btn-back *ngIf="type != 'General'"></btn-back>
+        <strong>{{title}}</strong>
         <div class="btns-container">
           <btn-exportar></btn-exportar>
           <ion-button slot="end" class="stats-btn black-btn" aria-label="Favorite" shape="round"> 
@@ -16,5 +18,5 @@
         <canvas id="myChart"></canvas>
       </div>
     </ion-card-content>
-    <btn-ver-mas style="padding-left: 4vw;" (click)="verMas()" ></btn-ver-mas>
+    <btn-ver-mas *ngIf="type == 'General'" style="padding-left: 4vw;" (click)="verMas()" ></btn-ver-mas>
   </ion-card>

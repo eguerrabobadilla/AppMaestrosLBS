@@ -1,0 +1,150 @@
+.title {
+    font-family: "Volte-Medium";
+    color: #704CEB;
+    font-size: x-large;
+    display: flex;
+    width: 100%;
+    padding-left: 1vw;
+    
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    margin-top: 1vh;
+    padding-left: 4vw;
+    padding-right: 1vw;
+}  
+  
+.btns-container-left {
+    position: relative;
+    bottom: 5px;
+    margin-right: auto;
+}
+
+.btns-container-right {
+    position: relative;
+    display: flex;
+    bottom: 5px;
+    margin-left: auto;
+}
+
+.content-row {
+    margin-bottom: 5vh;
+}
+
+.purple-txt {
+    color: #704CEB;
+}
+
+.grey-txt {
+    color: #606060;
+}
+
+.stats-libro {
+    font-size: large;
+}
+
+.libro-portada {
+    border-radius: 15px;
+    min-height: 10vh;
+    box-shadow: 8px 8px 13px 2px #00000026;
+    // margin-left: 3vw;
+    max-height: 20vh;
+    min-width: 5vw;
+  }
+
+.title-content {
+    font-family: "Volte-Medium";
+    color: #606060;
+    font-size: xx-large;
+    display: flex;
+  }
+
+.ranking {
+    background-color: #fff;
+    color: #704CEB;
+    font-size: xxx-large;
+    border-radius: 35px;
+    text-align: center;
+    width: 65px;
+    height: 65px;
+    box-shadow: 4px 4px 6px 0px #00000026;
+    // font-family: 'Volte-Bold';
+}
+
+.logo-footer {
+    position: relative;
+    width: 200px;
+    height: 35px;
+    pointer-events: none;
+    margin-bottom: 18px;
+    margin-left: auto;
+  }
+
+.info-row {
+    margin-bottom: 2vh;
+}
+
+.grafica-porcentaje {
+    height: 200px !important;
+    width: 200px !important;
+}
+
+.texto-porcentaje {
+    position: absolute;
+    position-area: center;
+    font-family: 'Volte-Bold';
+    color: #606060;
+    font-size: xxx-large;
+}
+
+.valor-de-uso {
+    text-align: center;
+    position-area: center;
+    position: absolute;
+    line-height: normal;
+}
+
+
+.table-container {
+    height: 45vh;
+    overflow-y: scroll;
+}
+
+thead, tbody, tfoot, tr, td, th {
+    border: solid;
+    border-color: #704ceb;
+
+}
+
+.index {
+    font-family: 'Volte-Bold';
+    font-size: large;
+    color: #704CEB;
+    display: flex;
+    width: 100%;
+  }
+
+ion-input.search {
+    --background: #373636;
+    --color: #fff;
+    --placeholder-color: #ddd;
+    --placeholder-opacity: 1;
+    border-radius: 25px;
+    font-family: 'Volte-Regular';
+    text-transform: unset;
+    font-size: small;
+    // --padding-end: 15px;
+    --padding-start: 15px;
+    padding-right: 1vw;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  
+  ion-icon.search-icon {
+    position: inherit;
+    left: 10px;
+  }
+
+  

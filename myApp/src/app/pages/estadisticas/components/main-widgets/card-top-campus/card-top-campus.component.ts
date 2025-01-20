@@ -1,3 +1,4 @@
+import { EstadisticasPage } from './../../../estadisticas.page';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -9,7 +10,10 @@ import { Subject } from 'rxjs';
 })
 
 export class cardTopCampusComponent implements OnDestroy, OnInit {
-    constructor(private router: Router) { }
+    constructor(
+      private router: Router,
+      public EstadisticasPage: EstadisticasPage
+    ) { }
 
     dtOptions: DataTables.Settings = {};
     CampusTops = 
@@ -18,37 +22,45 @@ export class cardTopCampusComponent implements OnDestroy, OnInit {
           "Campus": "Saltillo",
           "Horas": 58,
           "Usuarios": 1986,
+          "DescargasLibro": 53,
           "EscolaridadLibro": "Primaria",
           "GradoLibro": 4,
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
-          "Libro": "Formación Cívica y Ética"
+          "Libro": "Formación Cívica y Ética",
+          "Ranking": 1,
         },
         {
           "Campus": "Mazatlán",
           "Horas": 87,
           "Usuarios": 1500,
+          "DescargasLibro": 95,
           "EscolaridadLibro": "Primaria",
           "GradoLibro": 4,
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
-          "Libro": "Ciencias Naturales"
+          "Libro": "Ciencias Naturales",
+          "Ranking": 1,
         },
         {
           "Campus": "Laguna",
           "Horas": 78,
           "Usuarios": 951,
+          "DescargasLibro": 72,
           "EscolaridadLibro": "Preparatoria",
           "GradoLibro": 2,
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
-          "Libro": "English"
+          "Libro": "English",
+          "Ranking": 1,
         },
         {
           "Campus": "Durango",
           "Horas": 1,
           "Usuarios": 745,
+          "DescargasLibro": 84,
           "EscolaridadLibro": "Universidad",
           "GradoLibro": 6,
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
-          "Libro": "Formación Cívica y Ética"
+          "Libro": "Formación Cívica y Ética",
+          "Ranking": 1,
         },
       ];
     oTable;
@@ -82,40 +94,8 @@ export class cardTopCampusComponent implements OnDestroy, OnInit {
                 targets: 1,
                 searchable: false
             }
-        ]
-          // "columns": [
-          //   { "data": "Campus" },
-          //   { "data": "Horas de uso" },
-          //   { "data": "das" },
-          //   { "data": "Libro más utilizado" },
-
-            // { 
-            //   "data": "null",
-            //   "name": "buttonColumn",
-            //   "render": function (data, type, row) {
-          
-            //       return '<div class="txt-center txt-top">'+campus.Usuarios+' Usuarios</div>';
-            //   }
-            // },
-            
-          // ],
-          
-          // "initComplete": function (settings, json) {
-          //   // get instance of datatable
-          //   let table = settings.oInstance.api();                            
-          //   // get column using its name and set visibility
-          //   table.column('buttonColumn:name').visible(esto.extraInfo);
-          // } 
-          
-
+          ]
         });
-
-        // - Intentar hacer lo de abajo con un emmit event 
-        // if (esto.extraInfo) {
-
-        //   $('#topCampus thead tr').append('<th>Add Extra</th>')
-      
-        // } 
       });
 
       // Cuando me suscriba para obtener la información, usar el trigger para pintar la tabla

@@ -5,7 +5,7 @@
         <ion-row>
             <ion-col #horasUsoCampusCol [size]="colSizeL">
                 <!-- Hora de uso de por campus -->
-                    <card-hora-uso-campus (verMasEvent)="verMasBtn()"></card-hora-uso-campus>
+                    <card-hora-uso-campus [type]="'General'" (verMasEvent)="verMasBtn()"></card-hora-uso-campus>
     
             </ion-col>
             <ion-col #totalLibrosCol *ngIf="display" [size]="colSizeS">

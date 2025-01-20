@@ -1,0 +1,139 @@
+.header {
+    font-family: "Volte-Medium";
+    color: #704CEB;
+    font-size: x-large;
+    display: flex;
+    width: 100%;
+    padding-left: 1vw;
+    
+}
+
+.title {
+    font-family: Volte-Regular; 
+    color: #704CEB; 
+    margin-top: 25px;
+    display: contents;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    margin-top: 1vh;
+    padding-left: 4vw;
+    padding-right: 1vw;
+}  
+  
+.btns-container-left {
+    position: relative;
+    bottom: 5px;
+    margin-right: auto;
+}
+
+.btns-container-right {
+    position: relative;
+    display: flex;
+    bottom: 5px;
+    margin-left: auto;
+}
+
+.btn-back {
+    bottom: 15px;
+    position: relative;
+}
+
+// Tablas
+
+
+thead, tbody, tfoot, tr, td, th {
+    border: solid;
+    border-color: #C4C4C4;
+    
+}
+
+  
+.txt-center {
+    text-align: center !important;
+}
+  
+.txt-top {
+    vertical-align: text-top;
+    padding-top: 15px;
+}
+
+.table-head {
+    color: #606060;
+    font-size: large;
+}
+  
+.escolaridad {
+    font-family: 'Volte-Medium';
+    font-size: medium;
+    color: #606060;
+    display: flex;
+    width: 100%;
+}
+  
+.cantidad {
+    font-family: 'Volte-Medium';
+    font-size: medium;
+    color: #606060;;
+    display: flex;
+    width: 100%;
+}
+
+
+// Charts
+
+.grafica-porcentaje {
+    height: 200px !important;
+    width: 200px !important;
+}
+
+.texto-porcentaje {
+    position: absolute;
+    font-family: 'Volte-Bold';
+    color: #606060;
+    font-size: xxx-large;
+    align-content: space-around;
+    text-align: center;
+}
+
+.usuarios-container {
+    align-content: space-around;
+}
+
+.usuarios-total {
+    font-family: "Volte-Bold";
+    text-align: center;
+    color: #606060;
+    font-size: xxx-large;
+}
+
+.usuarios-tipo {
+    font-family: "Volte-Medium";
+    text-align: center;
+    color: #704CEB;
+    font-size: medium;
+}
+
+
+ion-input.search {
+    --background: #373636;
+    --color: #fff;
+    --placeholder-color: #ddd;
+    --placeholder-opacity: 1;
+    border-radius: 25px;
+    font-family: 'Volte-Regular';
+    text-transform: unset;
+    font-size: small;
+    // --padding-end: 15px;
+    --padding-start: 15px;
+    padding-right: 1vw;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+  
+ion-icon.search-icon {
+    position: inherit;
+    left: 10px;
+}

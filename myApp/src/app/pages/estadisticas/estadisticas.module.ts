@@ -12,6 +12,11 @@ import { cardTotalLibrosComponent } from './components/main-widgets/card-total-l
 import { cardTopCampusComponent } from './components/main-widgets/card-top-campus/card-top-campus.component';
 import { btnVerMasComponent } from './components/buttons/btn-ver-mas/btn-ver-mas.component';
 import { btnExportarComponent } from './components/buttons/btn-exportar/btn-exportar.component';
+import { detalleLibroComponent } from './components/detalle-libro/detalle-libro.component';
+import { btnBackComponent } from './components/buttons/btn-back/btn-back.component';
+import { estadisticasCampusComponent } from './components/estadisticas-campus/estadisticas-campus.component';
+import { elegirCampusComponent } from './components/elegir-campus/elegir-campus.component';
+import { desgloceUsuariosComponent } from './components/desgloce-usuarios/desgloce-usuarios.component';
 
 
 
@@ -26,7 +31,12 @@ import { btnExportarComponent } from './components/buttons/btn-exportar/btn-expo
     cardTotalLibrosComponent,
     cardTopCampusComponent,
     btnVerMasComponent,
-    btnExportarComponent
+    btnExportarComponent,
+    btnBackComponent,
+    detalleLibroComponent,
+    estadisticasCampusComponent,
+    elegirCampusComponent,
+    desgloceUsuariosComponent
   ],
   exports:[EstadisticasPage],
   imports: [
