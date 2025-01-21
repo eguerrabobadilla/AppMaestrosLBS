@@ -14,21 +14,17 @@
   }
 }
 
-ion-col {
-  // margin: 5px;
-  // padding: 5px;
-  // min-width: 60%;
-  max-height: 50%;
-  min-height: 50%;
-  padding-bottom: 25px;
-  
+.main-row {
+  margin: 1vw;
 }
 
-ion-col.col-izq {
-  background: #761313;
+.padding-right {
+  padding-right: 1vw;
+}
+ion-card.no-margin{
+  margin: 0vh !important;
 }
 
-ion-col.col-der {
- 
-  background: #131d76;
+ion-card {
+  margin: 0vh !important;
 }

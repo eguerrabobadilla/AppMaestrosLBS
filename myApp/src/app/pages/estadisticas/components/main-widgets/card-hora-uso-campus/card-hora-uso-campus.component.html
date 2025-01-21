@@ -1,7 +1,7 @@
-<ion-card #horasUsoCard class="stats-widget">
+<ion-card #horasUsoCard class="stats-widget dashboard-widget">
     <ion-card-header>
       <div class="title">
-        <btn-back *ngIf="type != 'General'"></btn-back>
+        <btn-back class="btn-back" *ngIf="type != 'General'"></btn-back>
         <strong>{{title}}</strong>
         <div class="btns-container">
           <btn-exportar></btn-exportar>

@@ -1,7 +1,7 @@
-<ion-card class="stats-widget">
+<ion-card class="stats-widget dashboard-widget">
   <ion-card-header>
     <ion-card-title>
-      <div class="title">{{totalUsuarios}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+      <div class="title">{{totalUsuarios | number}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
       <div class="subtitle">Usuarios</div>
     </ion-card-title>
   </ion-card-header>
@@ -11,31 +11,31 @@
       
       <!-- Porcentaje -->
         <ion-row>
-          <ion-col>
+          <ion-col size="1">
             <div class="porcentajes">{{porcentajeAlumnos}}%</div>
           </ion-col>
           
-          <ion-col>
+          <ion-col  size="1">
             <div class="porcentajes">{{porcentajeProfesores}}%</div>
           </ion-col>
         </ion-row>
       
       <!-- Total -->
         <ion-row>
-          <ion-col>
-            <div class="totales">{{totalAlumnos}}</div>
+          <ion-col size="1">
+            <div class="totales">{{totalAlumnos | number}}</div>
           </ion-col>
-          <ion-col>
-            <div class="totales">{{totalProfesores}}</div>
+          <ion-col size="1">
+            <div class="totales">{{totalProfesores | number}}</div>
           </ion-col>
         </ion-row>
       
       <!-- Alumnos/Profesores -->
         <ion-row>
-          <ion-col>
+          <ion-col size="1">
             <div class="subtitle">Alumnos</div>
           </ion-col>
-          <ion-col> 
+          <ion-col size="1"> 
             <div class="subtitle">Profesores</div>
           </ion-col>
         </ion-row>

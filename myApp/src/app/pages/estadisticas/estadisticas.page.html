@@ -2,8 +2,8 @@
     <h1 style="font-family: Volte-Regular; color: #704CEB; margin-top: 25px;">Estadisticas: <strong style="font-family: Volte-Bold;">General.</strong></h1>
     
     <ion-grid>
-        <ion-row>
-            <ion-col #horasUsoCampusCol [size]="colSizeL">
+        <ion-row class="main-row">
+            <ion-col class="padding-right" #horasUsoCampusCol [size]="colSizeL">
                 <!-- Hora de uso de por campus -->
                     <card-hora-uso-campus [type]="'General'" (verMasEvent)="verMasBtn()"></card-hora-uso-campus>
     
@@ -14,8 +14,8 @@
                  
             </ion-col>
         </ion-row>
-        <ion-row >
-            <ion-col #topCampusCol [size]="colSizeL">
+        <ion-row class="main-row">
+            <ion-col class="padding-right" #topCampusCol [size]="colSizeL">
                 <!-- Top Campus -->
                 <card-top-campus #topCampusCard></card-top-campus>
     

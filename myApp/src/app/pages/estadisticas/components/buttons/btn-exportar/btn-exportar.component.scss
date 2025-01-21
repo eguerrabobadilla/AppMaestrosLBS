@@ -1,0 +1,43 @@
+.icon {
+    margin-right: 10px !important;
+    max-height: 15px;
+    max-width: 15px;
+    margin-top: 7px;
+    margin-bottom: 7px
+}
+
+.popover-container {
+    border-radius: 35px;
+}
+
+.popover-item {
+    --min-height: 1px;
+}
+
+.popover-label {
+    font-family: "Volte-Regular";
+    font-size: x-small;
+}
+
+ion-item.stats-btn {
+    --color: #fff;
+    font-family: 'Volte-Regular';
+    text-transform: unset;
+    font-size: 12px;
+    border-radius: 35px;
+    margin-right: 1vw;
+}
+
+ion-item.purple-btn {
+    --background: #714ceb;
+    --background-activated: #4524b2;
+
+  }
+
+ion-list {
+    padding: 0 !important;
+}
+
+ion-popover {
+    --offset-y: 10px
+}

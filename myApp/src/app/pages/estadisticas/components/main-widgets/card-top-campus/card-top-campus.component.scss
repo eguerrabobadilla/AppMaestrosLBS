@@ -42,7 +42,7 @@
 }
 
 .table-container {
-  height: 45vh;
+  height: 35vh;
   overflow-y: scroll;
 }
 
@@ -95,8 +95,8 @@ thead, tbody, tfoot, tr, td, th {
 
 .libro-portada {
   border-radius: 15px;
-  min-height: 10vh;
-  max-height: 20vh;
+  min-height: 5vh;
+  max-height: 15vh;
   min-width: 5vw;
 }
 
@@ -149,7 +149,7 @@ ion-icon.search-icon {
 //    border-radius: 16px !important;
 // }
 
-::ng-deep .row-border  {
+::ng-deep .card-top-campus-identifier  {
   colgroup >  col:nth-child(2) {
    width: 10vw !important;
   }

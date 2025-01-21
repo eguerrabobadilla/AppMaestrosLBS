@@ -399,5 +399,15 @@ ion-card.stats-widget{
     height: 100%;
     --background: #F5F5F5;
     box-shadow: 8px 8px 15px 0px #00000026;
-    
+
+    // padding: 2vw;
+    padding-top: 2vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 1vw;
+    margin: 4vh;
   }
+
+ion-card.dashboard-widget {
+    margin: 0vh !important;
+}

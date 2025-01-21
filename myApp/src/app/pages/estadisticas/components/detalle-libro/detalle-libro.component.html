@@ -67,12 +67,13 @@
               <!-- info stats -->
               <ion-row class="info-row">
                 <ion-col>
+                  <!-- ToDO Falta un ng container para diferenciar si el libro es de universidad o básicas -->
                   <p class="grey-txt stats-libro">
-                    <span>{{libro.Usuarios}}  Usuarios asignados.</span> 
+                    <span>{{libro.Usuarios | number}}  Usuarios asignados.</span> 
                     <br>
-                    <span>{{libro.DescargasLibro}}  Descargas.</span>
+                    <span>{{libro.DescargasLibro | number}}  Descargas.</span>
                     <br>
-                    <span>{{libro.Horas}}  Horas de uso.</span>
+                    <span>{{libro.Horas | number}}  Horas de uso.</span>
                   </p>
                 </ion-col>
               </ion-row>
@@ -107,7 +108,7 @@
       <div class="footer">
 
         <div>
-          <ion-button class="stats-btn white-btn" style="font-family: 'Volte-Medium' !important;" aria-label="Favorite" shape="round"> 
+          <ion-button class="stats-btn white-btn" (click)="FolderComponent.abrirLibro(book)" style="font-family: 'Volte-Medium' !important;" aria-label="Favorite" shape="round"> 
             <ion-icon slot="end" name="book-outline" aria-hidden="true"></ion-icon>
             Abrir libro
         </ion-button> 
@@ -120,4 +121,5 @@
 
     </ion-card-content>
   </ion-card>
+  <!-- <iframe id="iframe10" #iframe [src]="urlLibrodev" frameborder="0" style="height: 100%; width: 100%; margin-bottom: 36px;"></iframe> -->
 </ion-content>

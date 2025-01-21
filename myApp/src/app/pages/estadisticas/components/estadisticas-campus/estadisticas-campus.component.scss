@@ -44,7 +44,24 @@
 .stats-libro {
     font-size: large;
 }
-
+  
+.libro-info-container {
+    height: 100%;
+    display: grid;
+  }
+  
+.libro-nombre {
+    font-family: 'Volte-Bold';
+    color: #606060;
+    text-align: left;
+}
+  
+.libro-escolaridad {
+    font-size: small;
+    color: #704CEB;
+    text-align: left;
+}
+  
 .libro-portada {
     border-radius: 15px;
     min-height: 10vh;
@@ -52,7 +69,13 @@
     // margin-left: 3vw;
     max-height: 20vh;
     min-width: 5vw;
-  }
+}
+  
+.libro-ver-mas-btn {
+    padding-right: 0 !important;
+    margin-top: auto;
+    width: 80%;
+}
 
 .title-content {
     font-family: "Volte-Medium";
@@ -125,6 +148,10 @@ thead, tbody, tfoot, tr, td, th {
     display: flex;
     width: 100%;
   }
+  
+.main-row {
+    margin: 2vh;
+}
 
 ion-input.search {
     --background: #373636;

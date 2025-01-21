@@ -52,7 +52,7 @@
                             </td>
                             <td class="txt-center txt-top">
                               <div class="cantidad">
-                                {{alumnos.Cantidad}}
+                                {{alumnos.Cantidad | number}}
                               </div>
                             </td>
                           </tr>
@@ -79,7 +79,7 @@
                             </td>
                             <td class="txt-center txt-top">
                               <div class="cantidad">
-                                {{profesores.Cantidad}}
+                                {{profesores.Cantidad | number}}
                               </div>
                             </td>
                           </tr>
@@ -100,7 +100,7 @@
                 </ion-col >
                 <ion-col class="usuarios-container" size="2">
                   <div>
-                      <div class="usuarios-total">{{totalAlumnos}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+                      <div class="usuarios-total">{{totalAlumnos | number}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
                       <div class="usuarios-tipo">Alumnos</div>
                   </div>
                 </ion-col>
@@ -114,7 +114,7 @@
                 </ion-col>
                 <ion-col class="usuarios-container" size="2">
                     <div>
-                        <div class="usuarios-total">{{totalProfesores}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+                        <div class="usuarios-total">{{totalProfesores | number}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
                         <div class="usuarios-tipo">Profesores</div>
                     </div>
                 </ion-col>

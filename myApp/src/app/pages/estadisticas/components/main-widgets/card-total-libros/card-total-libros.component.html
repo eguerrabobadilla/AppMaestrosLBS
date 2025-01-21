@@ -1,7 +1,7 @@
-<ion-card class="stats-widget">
+<ion-card class="stats-widget dashboard-widget">
   <ion-card-header>
     <ion-card-title>
-      <div class="title">{{totalLibros}}</div>
+      <div class="title">{{totalLibros | number}}</div>
       <div class="subtitle">Total de libros</div>
     </ion-card-title>
   </ion-card-header>
@@ -14,7 +14,7 @@
             <ion-text>{{item.Escolaridad}}</ion-text>
           </ion-col>
           <ion-col size="1">
-            <ion-text>{{item.CantidadLibros}}</ion-text>
+            <ion-text>{{item.CantidadLibros | number}}</ion-text>
           </ion-col>
         </ion-row>
       

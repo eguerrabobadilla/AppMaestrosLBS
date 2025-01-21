@@ -2,19 +2,19 @@
   <h1 style="font-family: Volte-Regular; color: #704CEB; margin-top: 25px;">Estadisticas: <strong style="font-family: Volte-Bold;">Campus.</strong></h1>
   
   <ion-grid>
-      <ion-row>
+      <ion-row class="main-row">
           <ion-col #horasUsoCampusCol >
               <!-- Hora de uso de por campus -->
                   <card-hora-uso-campus [type]="'Campus'"></card-hora-uso-campus>
   
           </ion-col>
       </ion-row>
-      <ion-row >
+      <ion-row class="main-row">
           <ion-col #topCampusCol>
               <!-- Top Campus -->
               <!-- mover lo de aqui a un componente -->
 
-              <ion-card class="stats-widget">
+              <ion-card class="stats-widget dashboard-widget">
                 <ion-card-header>
                   <ion-card-title>
                     <div class="title"><strong>Datos Específicos (Libros).</strong>
@@ -48,13 +48,15 @@
                         <td>
                           <ion-grid *ngIf="row.column1">
                             <ion-row >
-                              <ion-col>
+                              <ion-col size="1">
                                 <span class="index">
                                   {{row.column1.id}}
                                 </span>
-                                <img class="libro-portada" src={{row.column1.PortadaLibro}}>
                               </ion-col>
                               <ion-col>
+                                <img class="libro-portada" src={{row.column1.PortadaLibro}}>
+                              </ion-col>
+                              <ion-col offset="1">
                                 <div class="libro-info-container">
                                   <div>
                                     <div class="libro-nombre">
@@ -64,8 +66,10 @@
                                       {{row.column1.GradoLibro}} {{row.column1.EscolaridadLibro}}
                                     </div>
                                   </div>
-                                  <!-- <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas> -->
                                 </div>
+                              </ion-col>
+                              <ion-col style="text-align: end; align-self: flex-end;">
+                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro')"></btn-ver-mas>
                               </ion-col>
                             </ion-row>
                           </ion-grid>
@@ -74,13 +78,15 @@
                         <td>
                           <ion-grid *ngIf="row.column2">
                             <ion-row >
-                              <ion-col>
+                              <ion-col size="1">
                                 <span class="index">
-                                  {{row.column2.id}}
+                                  {{row.column1.id}}
                                 </span>
-                                <img class="libro-portada" src={{row.column2.PortadaLibro}}>
                               </ion-col>
                               <ion-col>
+                                <img class="libro-portada" src={{row.column2.PortadaLibro}}>
+                              </ion-col>
+                              <ion-col offset="1">
                                 <div class="libro-info-container">
                                   <div>
                                     <div class="libro-nombre">
@@ -93,6 +99,9 @@
                                   <!-- <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas> -->
                                 </div>
                               </ion-col>
+                              <ion-col style="text-align: end; align-self: flex-end;">
+                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro')"></btn-ver-mas>
+                              </ion-col>
                             </ion-row>
                           </ion-grid>
                         </td>
@@ -100,13 +109,15 @@
                         <td>
                           <ion-grid *ngIf="row.column3">
                             <ion-row >
-                              <ion-col>
+                              <ion-col size="1">
                                 <span class="index">
-                                  {{row.column3.id}}
+                                  {{row.column1.id}}
                                 </span>
-                                <img class="libro-portada" src={{row.column3.PortadaLibro}}>
                               </ion-col>
                               <ion-col>
+                                <img class="libro-portada" src={{row.column3.PortadaLibro}}>
+                              </ion-col>
+                              <ion-col offset="1">
                                 <div class="libro-info-container">
                                   <div>
                                     <div class="libro-nombre">
@@ -116,8 +127,10 @@
                                       {{row.column3.GradoLibro}} {{row.column3.EscolaridadLibro}}
                                     </div>
                                   </div>
-                                  <!-- <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas> -->
                                 </div>
+                              </ion-col>
+                              <ion-col style="text-align: end; align-self: flex-end;">
+                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro')"></btn-ver-mas>
                               </ion-col>
                             </ion-row>
                           </ion-grid>

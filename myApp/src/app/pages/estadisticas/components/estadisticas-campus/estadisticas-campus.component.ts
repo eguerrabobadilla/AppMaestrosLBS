@@ -1,6 +1,8 @@
+import { EstadisticasPage } from './../../estadisticas.page';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { Subject } from 'rxjs';
+
 
 declare var Chart: any;
 
@@ -14,7 +16,10 @@ export class estadisticasCampusComponent implements OnInit {
 
   // @Input() libro: any;
 
-  constructor(private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   
   dtOptions: DataTables.Settings = {};
@@ -314,6 +319,13 @@ export class estadisticasCampusComponent implements OnInit {
   onSearch(event: any) {
     const searchValue = event.target.value || '';
     this.oTable.search(searchValue).draw();
+  }
+
+  navigateToRoute(route: string, queryParams?: string){
+    console.log(route)
+    console.log(this.route)
+    this.router.navigate(['/home/estadisticas/'+route]);
+    // this.router.navigate(['/home/estadisticas/'+route]);
   }
 
 }

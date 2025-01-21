@@ -35,7 +35,7 @@
               <ng-container *ngIf="type != 'usuarios'">
                 <div class="books">
                   <!-- <div [ngClass]="{ 'alerta': type == 'usuarios', 'exito': type == 'libros' || 'campus' }" class="sub-title">{{totalUsuariosLibros}}</div> #NOTA - Hacer pipe para separar los miles con coma , -->
-                  <div class="sub-title-book">{{totalUsuariosLibros}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+                  <div class="sub-title-book">{{totalUsuariosLibros | number}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
                   <div class="sub-subtitle-book">{{subtitle}}</div>
                 </div>
               </ng-container>
@@ -44,7 +44,7 @@
           <ng-container *ngIf="type == 'usuarios'">
             <div class="books" >
               <!-- <div [ngClass]="{ 'alerta': type == 'usuarios', 'exito': type == 'libros' || 'campus' }" class="sub-title">{{totalUsuariosLibros}}</div> #NOTA - Hacer pipe para separar los miles con coma , -->
-              <div class="sub-title-book">{{totalUsuariosLibros}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
+              <div class="sub-title-book">{{totalUsuariosLibros | number}}</div> <!-- #NOTA - Hacer pipe para separar los miles con coma , -->
               <div class="sub-subtitle-book">{{subtitle}}</div>
             </div>
           </ng-container>
@@ -62,13 +62,13 @@
             <!-- Item General -->
             <ion-item [button]="true" (click)="navigateToRoute('desgloce-usuarios/general')" class="item-data">
               <ion-label class="grey-txt"><strong>General</strong></ion-label>
-              <div class="item-numbers">{{totalUsuariosLibros}}</div>
+              <div class="item-numbers">{{totalUsuariosLibros | number}}</div>
             </ion-item>
   
             <!-- Items Usuarios -->
             <ion-item [button]="true" (click)="navigateToRoute('desgloce-usuarios/campus', item.Campus)" class="item-data" *ngFor="let item of data">
               <ion-label class="grey-txt" ><strong>{{item.Campus}} </strong></ion-label>
-              <div class="item-numbers">{{item.Usuarios}}</div>
+              <div class="item-numbers">{{item.Usuarios | number}}</div>
             </ion-item>
           </ion-list>
         </ng-container>
@@ -80,7 +80,7 @@
             <!-- Items Libros -->
             <ion-item [button]="true" (click)="navigateToRoute('elegir-grado/campus')" class="item-data" *ngFor="let item of data">
               <ion-label class="grey-txt" ><strong>{{item.Campus}} </strong></ion-label>
-              <div class="item-numbers">{{item.Libros}}</div>
+              <div class="item-numbers">{{item.Libros | number}}</div>
             </ion-item>
           </ion-list>
         </ng-container>
@@ -92,7 +92,7 @@
           <ion-accordion-group >
             <ion-accordion class="item-data" *ngFor="let escolaridad of escolaridades" value="{{escolaridad}}">
               <ion-item  slot="header">
-                <ion-label class="grey-txt"><strong>{{escolaridad}}</strong> (100)</ion-label>
+                <ion-label class="grey-txt"><strong>{{escolaridad}}</strong> (100)</ion-label> <!-- aqui se debe sacar la cantidad de libros que hay por escolaridad y añadir el pipe | number  -->
               </ion-item>
               <div slot="content">
                 <ng-container *ngIf="escolaridad == 'Kinder' || escolaridad == 'Primaria'">
