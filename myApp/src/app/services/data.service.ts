@@ -78,12 +78,12 @@ export class DataService {
 
   abrirModal(){
     this.estadoModal = this.estadoModal ? false : true;
-    this.displayModal = 'none' ? 'inherit' : 'none'
+    this.displayModal = this.displayModal === 'none' ? 'inherit' : 'none'
   }
 
   abrirModalMain() {
 	  this.estadoModalMain = this.estadoModalMain ? false : true;
-	  this.displayModalMain = 'none' ? 'inherit' : ' none';
+	  this.displayModalMain = this.displayModalMain === 'none' ? 'inherit' : ' none';
 	  
   }
   cambiarPaginaSubejct(pagina: any) {

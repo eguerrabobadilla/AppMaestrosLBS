@@ -14,6 +14,22 @@
   }
 }
 
+.title {
+  font-family: 'Volte-Regular'; 
+  color: #704CEB; 
+  margin-top: 25px;
+  display: flex;
+  width: 100%;
+}
+
+.btns-container {
+  position: relative;
+  bottom: -1vh;
+  padding-right: 1vw;
+  margin-left: auto;
+  margin-top: auto;
+}
+
 .main-row {
   margin: 1vw;
 }

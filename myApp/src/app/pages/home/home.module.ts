@@ -24,6 +24,7 @@ import { FolderComponent } from 'src/app/components/folder/folder.component';
 import { SecuenciasComponent } from 'src/app/components/secuencias/secuencias.component';
 import { NgxJoditModule } from 'ngx-jodit'
 import { menuComponent } from 'src/app/components/menu/menu.component';
+import { visorLibroComponent } from 'src/app/components/visor-libro/visor-libro.component';
 
 
 @NgModule({
@@ -50,9 +51,10 @@ import { menuComponent } from 'src/app/components/menu/menu.component';
 
   providers: [
 	FolderComponent,
+  visorLibroComponent,
 	IonMenu
   ],
-  declarations: [HomePage, FolderComponent, SecuenciasComponent,menuComponent],
+  declarations: [HomePage, FolderComponent, SecuenciasComponent, visorLibroComponent, menuComponent],
 })
 
 

@@ -1,6 +1,7 @@
 import { FolderComponent } from './../../../../components/folder/folder.component';
 import { DataService } from './../../../../services/data.service';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { publicDecrypt } from 'crypto';
 import { Subject } from 'rxjs';
@@ -20,7 +21,8 @@ export class detalleLibroComponent implements OnInit {
     constructor(
       private router: Router,
       public dataService: DataService,
-      public FolderComponent: FolderComponent
+      public FolderComponent: FolderComponent,
+      private sanitizer: DomSanitizer,
     ) { }
 
     libro: any = {
@@ -63,9 +65,6 @@ export class detalleLibroComponent implements OnInit {
     valorDeUsoColor: string;
     
     ngOnInit() { 
-
-        console.log('detaslles de libros askdalsdka')
-        console.log(this.libro)
 
         this.porcentajeUso = Math.round((this.libro.DescargasLibro / this.libro.Usuarios) * 100);
         const diff = 100 - this.porcentajeUso;
@@ -134,6 +133,19 @@ export class detalleLibroComponent implements OnInit {
        * no parece buena opción poner lo mismo que en folder directo en este componente 
        * lo mejor sería crear un nuevo componente que sea solo el iframe para abrir el libro
        */
+
+      abrirLibro() {
+        // const jsonObject = { id: 1, name: 'Prueba', details: 'Esto es un ejemplo' };
+        // mejor mandar query params con el nombre del archivo y nombre libro
+        console.log("ABRIR LIBRO")
+        console.log(this.libro)
+        console.log(JSON.stringify(this.libro))
+        const data = { NombreLibro: this.book.Nombre, NombreArchivo: this.book.NombreArchivo }
+        this.router.navigate(['/home/visor-libros'], { queryParams: {Nombre: this.book.Nombre, NombreArchivo: this.book.NombreArchivo} });
+        // this.router.navigate(['/home/visor-libros'], {
+        //   queryParams: { NombreLibro: this.book.Nombre },
+        // });
+      }
       
 	  // abrirLibro(libro: any){
     //   const mainUrl: string = 'https://teacher.alfalbs.app/books/';

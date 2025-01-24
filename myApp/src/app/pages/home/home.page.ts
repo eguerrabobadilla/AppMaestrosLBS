@@ -219,7 +219,8 @@ import { Config } from 'jodit/src/config';
 		  });
 	  
 		  this.dataService.rutaActual$.subscribe((ruta) => {
-			let rutaSinguion:string = ruta.replace(/-/g, ' ');
+			let rutaSinQueryParams = ruta.split('?')[0];
+			let rutaSinguion:string = rutaSinQueryParams.replace(/-/g, ' ');
 			let rutaArray: string[] = rutaSinguion.split('/');
 			this.rutaActual = rutaArray;
 			console.log(rutaArray);

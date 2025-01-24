@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { FolderComponent } from 'src/app/components/folder/folder.component';
+import { visorLibroComponent } from 'src/app/components/visor-libro/visor-libro.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
         //   import('../tiempo-de-uso-de-docentes/tiempo-de-uso-de-docentes.module').then((m) => m.TiempoDeUsoDeDocentesModule),
         loadChildren: () =>
           import('../estadisticas/estadisticas.module').then((m) => m.EstadisticasPageModule),
+      },
+      {
+        path: 'visor-libros',          
+        component: visorLibroComponent,
       },
     ],
   },
