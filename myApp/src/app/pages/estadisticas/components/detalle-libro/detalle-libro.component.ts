@@ -31,7 +31,7 @@ export class detalleLibroComponent implements OnInit {
         "Usuarios": 1986,
         "DescargasLibro": 1530,
         "EscolaridadLibro": "Primaria",
-        "GradoLibro": 4,
+        "GradoLibro": '4',
         "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
         "Libro": "Formación Cívica y Ética",
         "Ranking": 1,
@@ -40,7 +40,7 @@ export class detalleLibroComponent implements OnInit {
     book: any = {
       "Id": 2288,
       "Nombre": "Robótica 2024",
-      "NombreArchivo": "KIN_01_robotica_v2",
+      "NombreArchivo": "ESC_01_robotica_v2",
       "Idioma": "Espanol",
       "Grados": "1",
       "Suffix": "°",
@@ -123,54 +123,14 @@ export class detalleLibroComponent implements OnInit {
             this.valorDeUsoColor = '#f72828';
         }
       }
-      
-
-      // Cosas de abrir libro
-
-      /**
-       * Parece que la parte de abrir libro se hace con un iframe que ya está puesto en la página de folder y no es un componente propio
-       * irse a la página de libro y abrir el iframe se ve difícil
-       * no parece buena opción poner lo mismo que en folder directo en este componente 
-       * lo mejor sería crear un nuevo componente que sea solo el iframe para abrir el libro
-       */
 
       abrirLibro() {
-        // const jsonObject = { id: 1, name: 'Prueba', details: 'Esto es un ejemplo' };
-        // mejor mandar query params con el nombre del archivo y nombre libro
         console.log("ABRIR LIBRO")
         console.log(this.libro)
         console.log(JSON.stringify(this.libro))
         const data = { NombreLibro: this.book.Nombre, NombreArchivo: this.book.NombreArchivo }
         this.router.navigate(['/home/visor-libros'], { queryParams: {Nombre: this.book.Nombre, NombreArchivo: this.book.NombreArchivo} });
-        // this.router.navigate(['/home/visor-libros'], {
-        //   queryParams: { NombreLibro: this.book.Nombre },
-        // });
       }
-      
-	  // abrirLibro(libro: any){
-    //   const mainUrl: string = 'https://teacher.alfalbs.app/books/';
-    //   let urlTemp = `${mainUrl}${libro.NombreArchivo}/index.html`;
-  
-    //   let urlTempdev = `${mainUrl}${libro.NombreArchivo.split("_prueba")[0]}/index.html`;
-      
-  
-    //   this.urlLibrodev = this.domSanitizer.bypassSecurityTrustResourceUrl(urlTempdev);
-      
-    //   this.librosLoading = true;
-    //   this.dataService.libroActual = libro;
-    //   // const { Id } = libro;
-      
-    //   // accion abrir ifrime con link real libro
-    //   this.dataService.setNombreLibroActual(libro.Nombre);
-    //   this.iframeEstado = true;
-    //   this.acordeonEstado = false;
-    //   this.botonesEstado = true;
-    //   setTimeout(() => {
-    //     this.dataService.currentIframe = this.iframe.nativeElement.contentWindow;
-    //   }, 100);
-  
-  
-    //   }
 
 
 }

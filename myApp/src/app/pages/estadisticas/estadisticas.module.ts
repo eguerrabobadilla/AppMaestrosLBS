@@ -17,6 +17,7 @@ import { btnBackComponent } from './components/buttons/btn-back/btn-back.compone
 import { estadisticasCampusComponent } from './components/estadisticas-campus/estadisticas-campus.component';
 import { elegirCampusComponent } from './components/elegir-campus/elegir-campus.component';
 import { desgloceUsuariosComponent } from './components/desgloce-usuarios/desgloce-usuarios.component';
+import { GradosSuffixPipe } from 'src/app/pipes/grados-suffix.pipe';
 
 
 
@@ -44,7 +45,8 @@ import { desgloceUsuariosComponent } from './components/desgloce-usuarios/desglo
     CommonModule,
     IonicModule,
     FormsModule,
-    DataTablesModule
+    DataTablesModule,
+    GradosSuffixPipe
   ]
 })
 export class EstadisticasPageModule { }

@@ -56,7 +56,7 @@
                         1. {{ campus.Libro }}.
                       </div>
                       <div class="libro-escolaridad">
-                        {{campus.GradoLibro}} {{campus.EscolaridadLibro}}
+                        {{campus.GradoLibro  | gradosSuffix: 'escolaridad'}} {{campus.EscolaridadLibro}}
                       </div>
                     </div>
                     <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas>

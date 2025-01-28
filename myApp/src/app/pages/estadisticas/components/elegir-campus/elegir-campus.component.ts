@@ -17,7 +17,7 @@ export class elegirCampusComponent implements OnInit {
     totalUsuariosLibros: number = 0;
 
     escolaridad: string;
-    grado: number;
+    grado: string;
 
     data: any[];
     dataUsuarios: any[] = [
@@ -62,7 +62,7 @@ export class elegirCampusComponent implements OnInit {
           "Usuarios": 1986,
           "DescargasLibro": 53,
           "EscolaridadLibro": "Primaria",
-          "GradoLibro": 4,
+          "GradoLibro": '4',
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
           "Libro": "Formación Cívica y Ética",
           "Ranking": 1,
@@ -73,7 +73,7 @@ export class elegirCampusComponent implements OnInit {
           "Usuarios": 1500,
           "DescargasLibro": 95,
           "EscolaridadLibro": "Primaria",
-          "GradoLibro": 4,
+          "GradoLibro": '4',
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
           "Libro": "Ciencias Naturales",
           "Ranking": 1,
@@ -84,7 +84,7 @@ export class elegirCampusComponent implements OnInit {
           "Usuarios": 951,
           "DescargasLibro": 72,
           "EscolaridadLibro": "Preparatoria",
-          "GradoLibro": 2,
+          "GradoLibro": '2',
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
           "Libro": "English",
           "Ranking": 1,
@@ -95,7 +95,7 @@ export class elegirCampusComponent implements OnInit {
           "Usuarios": 745,
           "DescargasLibro": 84,
           "EscolaridadLibro": "Universidad",
-          "GradoLibro": 6,
+          "GradoLibro": '6',
           "PortadaLibro": "https://www.alfalbs.app/ApiOmega/covers/ESC_01_robotica_v2.jpg",
           "Libro": "Formación Cívica y Ética",
           "Ranking": 1,

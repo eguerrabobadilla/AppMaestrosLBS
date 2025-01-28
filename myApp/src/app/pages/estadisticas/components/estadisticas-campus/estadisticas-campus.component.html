@@ -63,7 +63,7 @@
                                       1. {{ row.column1.Libro }}.
                                     </div>
                                     <div class="libro-escolaridad">
-                                      {{row.column1.GradoLibro}} {{row.column1.EscolaridadLibro}}
+                                      {{row.column1.GradoLibro | gradosSuffix: 'escolaridad'}} {{row.column1.EscolaridadLibro}}
                                     </div>
                                   </div>
                                 </div>
@@ -93,7 +93,7 @@
                                       1. {{ row.column2.Libro }}.
                                     </div>
                                     <div class="libro-escolaridad">
-                                      {{row.column2.GradoLibro}} {{row.column2.EscolaridadLibro}}
+                                      {{row.column2.GradoLibro | gradosSuffix: 'escolaridad'}} {{row.column2.EscolaridadLibro}}
                                     </div>
                                   </div>
                                   <!-- <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas> -->
@@ -124,7 +124,7 @@
                                       1. {{ row.column3.Libro }}.
                                     </div>
                                     <div class="libro-escolaridad">
-                                      {{row.column3.GradoLibro}} {{row.column3.EscolaridadLibro}}
+                                      {{row.column3.GradoLibro | gradosSuffix: 'escolaridad'}} {{row.column3.EscolaridadLibro}}
                                     </div>
                                   </div>
                                 </div>
