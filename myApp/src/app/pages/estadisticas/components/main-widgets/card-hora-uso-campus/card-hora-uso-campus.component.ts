@@ -1,3 +1,4 @@
+import { EstadisticasFsService } from './../../../../../services/estadisticas-fs.service';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonCard, IonCol } from '@ionic/angular';
@@ -20,7 +21,9 @@ export class cardHoraUsoCampusComponent implements OnInit {
   @Input() type: string;
   @Output() verMasEvent = new EventEmitter<void>();
   
-    constructor() {
+    constructor(
+      private EstadisticasFsService: EstadisticasFsService,
+    ) {
 
     }
 
@@ -42,6 +45,7 @@ export class cardHoraUsoCampusComponent implements OnInit {
     ngOnInit(): void {
 
         console.log(this.type);
+        this.getCampus();
 
         if(this.type == 'General') {
           this.labels = this.chartGeneral.labels;
@@ -172,6 +176,12 @@ export class cardHoraUsoCampusComponent implements OnInit {
 
     verMas() {
       this.verMasEvent.emit();
+    }
+
+    async getCampus() {
+      const data = await this.EstadisticasFsService.getHorasCampus();
+      console.log("data");
+      console.log(data);
     }
 
 }
