@@ -10,9 +10,12 @@ import { Subject } from 'rxjs';
 })
 
 export class cardTopCampusComponent implements OnDestroy, OnInit {
+
+  @Input() topCampus: any;
+
     constructor(
+      public EstadisticasPage: EstadisticasPage,
       private router: Router,
-      public EstadisticasPage: EstadisticasPage
     ) { }
 
     dtOptions: DataTables.Settings = {};
@@ -70,6 +73,8 @@ export class cardTopCampusComponent implements OnDestroy, OnInit {
     dtTrigger: Subject<any> = new Subject<any>();
 
     ngOnInit() { 
+
+      console.log("TOP CAMPUS")
 
       this.dtOptions = {
         pagingType: 'full_numbers',

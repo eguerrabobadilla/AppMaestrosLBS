@@ -1,44 +1,108 @@
 <ion-content>
     <div class="title">
-        <h1>Estadisticas: <strong style="font-family: Volte-Bold;">General.</strong></h1>
+        <h1>Estadísticas: <strong style="font-family: Volte-Bold;">General.</strong></h1>
         <div class="btns-container">
             <ion-button slot="end" class="stats-btn black-btn" aria-label="Favorite" shape="round" size="small"> 
                 <ion-icon name="calendar" aria-hidden="true"></ion-icon>
                 <ion-icon slot="end" name="chevron-down-outline" aria-hidden="true"></ion-icon>
             </ion-button> 
+            <ion-button (click)="callFunction()" slot="end" class="stats-btn black-btn" aria-label="Favorite" shape="round" size="small"> 
+                <ion-icon name="refresh-outline" aria-hidden="true"></ion-icon>
+            </ion-button> 
+            <ion-button (click)="testTopCampus()" slot="end" class="stats-btn black-btn" aria-label="Favorite" shape="round" size="small"> 
+                <ion-icon name="albums-outline" aria-hidden="true"></ion-icon>
+            </ion-button> 
         </div>
     </div>
     
-    <ion-grid>
-        <ion-row class="main-row">
-            <ion-col class="padding-right" #horasUsoCampusCol [size]="colSizeL">
-                <!-- Hora de uso de por campus -->
-                    <card-hora-uso-campus [type]="'General'" (verMasEvent)="verMasBtn()"></card-hora-uso-campus>
+        <ion-grid *ngIf="widgetsLoaded;else skeleton">
+            <ion-row class="main-row">
+                <ion-col class="padding-right" #horasUsoCampusCol [size]="colSizeL">
+                    <!-- Hora de uso de por campus -->
+                    <card-hora-uso-campus 
+                        *ngIf="chartData"
+                        [type]="'General'" 
+                        [chartData]="chartData"
+                        (verMasEvent)="verMasBtn()"
+                    >
+                    </card-hora-uso-campus>
+        
+                </ion-col>
+                <ion-col #totalLibrosCol *ngIf="display" [size]="colSizeS">
+                    <!-- Total de libros -->
+                    <card-total-libros
+                        *ngIf="totalLibrosData"
+                        [totalLibrosObj]="totalLibrosData"
+                    ></card-total-libros>
+                    
+                </ion-col>
+            </ion-row>
+            <ion-row class="main-row">
+                <ion-col class="padding-right" #topCampusCol [size]="colSizeL">
+                    <!-- Top Campus -->
+                    <card-top-campus #topCampusCard
+                        *ngIf="topCampusData"
+                        [topCampus]="topCampusData"
+                    ></card-top-campus>
+        
+                </ion-col>
+                <ion-col #usuariosCol *ngIf="display" [size]="colSizeS">
+                    <!-- Usuarios -->
+                    <card-usuarios
+                        *ngIf="totalUsuariosData"
+                        [totalUsuariosObj]="totalUsuariosData"
+                    ></card-usuarios>
+                    
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     
-            </ion-col>
-            <ion-col #totalLibrosCol *ngIf="display" [size]="colSizeS">
-                <!-- Total de libros -->
-                    <card-total-libros></card-total-libros>
-                 
-            </ion-col>
-        </ion-row>
-        <ion-row class="main-row">
-            <ion-col class="padding-right" #topCampusCol [size]="colSizeL">
-                <!-- Top Campus -->
-                <card-top-campus #topCampusCard></card-top-campus>
+    <ng-template #skeleton>
+        <ion-grid>
+            <ion-row class="main-row">
+                <ion-col class="padding-right" #horasUsoCampusCol [size]="colSizeL">
+                    <!-- Hora de uso de por campus -->
+                    <!-- <card-hora-uso-campus 
+                        *ngIf="chartData"
+                        [type]="'General'" 
+                        [chartData]="chartData"
+                        (verMasEvent)="verMasBtn()"
+                    >
+                    </card-hora-uso-campus> -->
+                    <ion-skeleton-text [animated]="true" style="width: 100%; height: 50vh"></ion-skeleton-text>
+        
+                </ion-col>
+                <ion-col #totalLibrosCol *ngIf="display" [size]="colSizeS">
+                    <!-- Total de libros -->
+                    <!-- <card-total-libros
+                        *ngIf="totalLibrosData"
+                        [totalLibrosObj]="totalLibrosData"
+                    ></card-total-libros> -->
+                    <ion-skeleton-text [animated]="true" style="width: 100%; height: 50vh;"></ion-skeleton-text>
+                    
+                </ion-col>
+            </ion-row>
+            <ion-row class="main-row">
+                <ion-col class="padding-right" #topCampusCol [size]="colSizeL">
+                    <!-- Top Campus -->
+                    <!-- <card-top-campus #topCampusCard
+                        *ngIf="topCampusData"
+                        [topCampus]="topCampusData"
+                    ></card-top-campus> -->
+                    <ion-skeleton-text [animated]="true" style="width: 100%; height: 50vh"></ion-skeleton-text>
+        
+                </ion-col>
+                <ion-col #usuariosCol *ngIf="display" [size]="colSizeS">
+                    <!-- Usuarios -->
+                    <!-- <card-usuarios
+                        *ngIf="totalUsuariosData"
+                        [totalUsuariosObj]="totalUsuariosData"
+                    ></card-usuarios> -->
+                    <ion-skeleton-text [animated]="true" style="width: 100%; height: 50vh"></ion-skeleton-text>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ng-template>
     
-            </ion-col>
-            <ion-col #usuariosCol *ngIf="display" [size]="colSizeS">
-                <!-- Usuarios -->
-                <card-usuarios></card-usuarios>
-    
-            </ion-col>
-        </ion-row>
-    </ion-grid>
 </ion-content>
-
-
-
-
-
-

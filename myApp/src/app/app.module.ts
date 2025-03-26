@@ -20,6 +20,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AppComponent } from './app.component';
 import { DataTablesModule } from "angular-datatables";
+import { initializeApp, provideFirebaseApp, } from '@angular/fire/app';
+import { getFirestore, provideFirestore,  } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+require('firebase/auth')
 
 //import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -35,9 +39,13 @@ import { DataTablesModule } from "angular-datatables";
 	AppRoutingModule,
 	FormsModule,
 	HttpClientModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
 	AngularFireModule.initializeApp(environment.firebase),
 	AngularFirestoreModule,
+    AngularFireAuthModule,
 	AngularFireFunctionsModule,
+	
 	DataTablesModule,
 	//NgbToastModule
 

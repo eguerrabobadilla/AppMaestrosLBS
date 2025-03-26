@@ -27,12 +27,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let campus of CampusTops; index as i">
+        <tr *ngFor="let campus of topCampus; index as i">
           <!-- CAMPUS -->
           <td class="txt-center txt-top">
             <div class="index">
               {{i+1}}
-              <ion-button class="stats-btn black-btn index-campus-btn" aria-label="Favorite" shape="round" (click)="EstadisticasPage.navigateToRoute('estadisticas-campus')"> 
+              <ion-button class="stats-btn black-btn index-campus-btn" aria-label="Favorite" shape="round" (click)="EstadisticasPage.navigateToRoute('estadisticas-campus', 'CampusId',  campus.CampusId)"> 
                 <ion-icon slot="end" name="chevron-forward-circle" aria-hidden="true"></ion-icon>
                 {{ campus.Campus }}
               </ion-button> 
@@ -63,7 +63,7 @@
                   </div>
                 </ion-col>
                 <ion-col>
-                  <img class="libro-portada" src={{campus.PortadaLibro}}>
+                  <img class="libro-portada" src="https://www.alfalbs.app/ApiOmega/covers/{{campus.PortadaLibro}}">
                 </ion-col>
               </ion-row>
             </ion-grid>

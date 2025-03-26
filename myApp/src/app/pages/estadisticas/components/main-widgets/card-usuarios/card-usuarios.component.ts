@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { EstadisticasPage } from './../../../estadisticas.page';
 
@@ -9,8 +9,10 @@ import { EstadisticasPage } from './../../../estadisticas.page';
 })
 
 export class cardUsuariosComponent implements OnInit {
+    
+    @Input() totalUsuariosObj: any;
+
     constructor(
-        
         private router: Router,
         public EstadisticasPage: EstadisticasPage
     ) { }
@@ -25,8 +27,8 @@ export class cardUsuariosComponent implements OnInit {
 
     ngOnInit() { 
 
-        this.totalAlumnos = 27300;
-        this.totalProfesores = 3246;
+        this.totalAlumnos = this.totalUsuariosObj[0].Cantidad;
+        this.totalProfesores = this.totalUsuariosObj[1].Cantidad;
 
         this.totalUsuarios = this.totalAlumnos + this.totalProfesores;
 

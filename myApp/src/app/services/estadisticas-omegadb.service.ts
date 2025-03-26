@@ -11,7 +11,7 @@ export class EstadisticasOmegaService {
 	private url: string = 'https://pruebasnek-default-rtdb.firebaseio.com';
 	// private urlOmega: string = 'https://www.alfalbs.app/ApiOmega';
 	 //private urlOmega: string ='http://172.16.12.40:5000';
-	private urlOmega: string ='https://192.168.61.171:5001';
+	private urlOmega: string ='https://dev.alfalbs.app/ApiOmega';
 	ws: string = 'api/ReportesPerseus';
 
   	constructor(private http: HttpClient) { }
@@ -28,11 +28,21 @@ export class EstadisticasOmegaService {
 	addSecuenciaLibro(idLibro: string, datosLibro: any) {
 		return this.http.post(`${this.url}/${idLibro}/secuencias.json`, datosLibro);
 	}
-
+	
 	getCampus() {
 		return this.http.get<Campus[]>(`${this.urlOmega}/${this.ws}/getCampus`);
 	}
-	
 
+	getTopCampusData(datosLibro: any, options?: any) {
+		return this.http.post(`${this.urlOmega}/${this.ws}/getTopCampusData`, datosLibro, options);
+	}
+	
+	getTotalLibros() {
+		return this.http.get<any[]>(`${this.urlOmega}/${this.ws}/CountLibrosPorEscolaridad`);
+	}
+
+	getTotalUsuarios() {
+		return this.http.get<any[]>(`${this.urlOmega}/${this.ws}/CountUsuariosPorTipo`);
+	}
 }
 

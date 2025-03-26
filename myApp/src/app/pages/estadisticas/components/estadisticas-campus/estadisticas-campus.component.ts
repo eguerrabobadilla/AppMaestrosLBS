@@ -2,6 +2,8 @@ import { EstadisticasPage } from './../../estadisticas.page';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
 import { Subject } from 'rxjs';
+import { EstadisticasFsService } from 'src/app/services/estadisticas-fs.service';
+import { EstadisticasOmegaService } from 'src/app/services/estadisticas-omegadb.service';
 
 
 declare var Chart: any;
@@ -19,6 +21,8 @@ export class estadisticasCampusComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private EstadisticasFsService: EstadisticasFsService,
+    private estadisticasOmegaService: EstadisticasOmegaService,
   ) { }
 
   
@@ -265,7 +269,8 @@ export class estadisticasCampusComponent implements OnInit {
     { header: 'Campus 2', indexOffset: 2 },
     { header: 'Campus 3', indexOffset: 3 }
   ];
-  
+
+  campusId: number;
 
   porcentajeUso: number;
   valorDeUsoTxt: string;
@@ -276,18 +281,29 @@ export class estadisticasCampusComponent implements OnInit {
   array3: any[] = [];
   rows: any[] = [];
   arrayWithId: any[] = [];
+
+  librosData: {};
   
   ngOnInit() { 
 
+  // Leer CampusId
+  this.route.queryParams.subscribe(params => {
+    console.log(params); 
+
+    this.campusId = params['CampusId'];
+    console.log('CampusId:', this.campusId);
+    this.testCampusBookList();
+  });
+
     // Añadir un campo `id` basado en la posición
-   this.arrayWithId = this.CampusTops.map((item, index) => ({
-    id: index + 1, // El índice comienza en 0, por lo que sumamos 1
-    ...item        // Conserva el resto de las propiedades del objeto original
+  this.arrayWithId = this.CampusTops.map((item, index) => ({
+    id: index + 1, 
+    ...item        
   }));
 
   for (let i = 0; i < this.arrayWithId.length; i += 3) {
     this.rows.push({
-      column1: this.arrayWithId[i] || null,      // Elemento 1 de la fila
+      column1: this.arrayWithId[i] || null,     // Elemento 1 de la fila
       column2: this.arrayWithId[i + 1] || null, // Elemento 2 de la fila
       column3: this.arrayWithId[i + 2] || null, // Elemento 3 de la fila
     });
@@ -321,11 +337,22 @@ export class estadisticasCampusComponent implements OnInit {
     this.oTable.search(searchValue).draw();
   }
 
-  navigateToRoute(route: string, queryParams?: string){
+  navigateToRoute(route: string, queryKey?: string, queryParams?: string){
     console.log(route)
     console.log(this.route)
-    this.router.navigate(['/home/estadisticas/'+route]);
+    
+    const params = queryKey ? { [queryKey]: queryParams } : {};
+
+    this.router.navigate([route], { relativeTo: this.route, queryParams: params });
     // this.router.navigate(['/home/estadisticas/'+route]);
+  }
+
+  
+  async testCampusBookList() {
+    // this.topCampusData = await firstValueFrom(this.EstadisticasFsService.getBestRankedBooks());
+    this.librosData = await (this.EstadisticasFsService.getTopCampus('estadisticas-campus', String(this.campusId)));
+    console.log(this.librosData);
+    
   }
 
 }

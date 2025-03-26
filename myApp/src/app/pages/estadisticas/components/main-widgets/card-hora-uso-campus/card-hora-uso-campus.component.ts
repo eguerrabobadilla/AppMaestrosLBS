@@ -1,5 +1,6 @@
+import { firstValueFrom } from 'rxjs';
 import { EstadisticasFsService } from './../../../../../services/estadisticas-fs.service';
-import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonCard, IonCol } from '@ionic/angular';
 import { DataService } from 'src/app/services/data.service';
@@ -19,6 +20,7 @@ export class cardHoraUsoCampusComponent implements OnInit {
   @ViewChild('horasUsoCard') cardHoraUso: ElementRef<HTMLDivElement>;
   @Input() horasUsoCampusCol!: IonCol;
   @Input() type: string;
+  @Input() chartData: { labels: string[]; data: number[] };
   @Output() verMasEvent = new EventEmitter<void>();
   
     constructor(
@@ -42,111 +44,114 @@ export class cardHoraUsoCampusComponent implements OnInit {
     title: string;
     xChartTitle: string;
     
-    ngOnInit(): void {
+    
+    async ngOnInit(): Promise<void> {
 
-        console.log(this.type);
-        this.getCampus();
+      
+      console.log(this.type);
 
-        if(this.type == 'General') {
-          this.labels = this.chartGeneral.labels;
-          this.data = this.chartGeneral.data;
-          this.title = "Horas de Uso por Campus.";
-          this.xChartTitle = "Campus";
-        }
-        else if (this.type == 'Campus') {
-          this.labels = this.chartCampus.labels;
-          this.data = this.chartCampus.data;
-          this.title = "Horas de Uso: Campus Durango.";
-          this.xChartTitle = "Libros"
-        }
+      if(this.type == 'General') {
+        
+        console.log(this.chartData);
+        this.labels = this.chartData.labels;
+        this.data = this.chartData.data;
+        this.title = "Horas de Uso por Campus.";
+        this.xChartTitle = "Campus";
+      }
+      else if (this.type == 'Campus') {
+        this.labels = this.chartCampus.labels;
+        this.data = this.chartCampus.data;
+        this.title = "Horas de Uso: Campus Durango.";
+        this.xChartTitle = "Libros"
+      }
 
-        const ctx = document.getElementById('myChart');
+      const ctx = document.getElementById('myChart');
 
-        const chart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-            
-            labels: this.labels,
-            datasets: [{
-              // display: false,  
-              label: 'Horas de uso',
-              data: this.data,
-              // borderWidth: 10,
-              barThickness: 25,
-              maxBarThickness: 30,
-              backgroundColor: 'rgba(112, 76, 235, 1)',
-              borderRadius: 10,
-              borderSkipped: 'bottom',
-              minBarLength: 10,
-            }]
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          
+          labels: this.labels,
+          datasets: [{
+            // display: false,  
+            label: 'Horas de uso',
+            data: this.data,
+            // borderWidth: 10,
+            barThickness: 25,
+            maxBarThickness: 30,
+            backgroundColor: 'rgba(112, 76, 235, 1)',
+            borderRadius: 10,
+            borderSkipped: 'bottom',
+            minBarLength: 10,
+          }]
+        },
+        options: {
+          plugins: {
+             legend: {
+                display: false
+             }
           },
-          options: {
-            plugins: {
-               legend: {
-                  display: false
-               }
-            },
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-              y: {
-                display: true,
-                title: {
-                    display: true,
-                    text: 'Horas de uso',
-                    color: '#704CEB',
-                    font: {
-                      family: 'Volte-Bold',
-                      size: 14,
-                      weight: '700',
-                      lineHeight: 1.2,
-                    },
-                    padding: {top: 20, left: 0, right: 0, bottom: 0}
-                },
-                beginAtZero: true,
-                grid: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            y: {
+              display: true,
+              title: {
                   display: true,
-                },
-                ticks: {
+                  text: 'Horas de uso',
                   color: '#704CEB',
                   font: {
-                    family: 'Volte-Regular',
-                    size: 12,
-                    weight: '500',
+                    family: 'Volte-Bold',
+                    size: 14,
+                    weight: '700',
                     lineHeight: 1.2,
-                  },
-                }
-              },
-              x: {
-                display: true,
-                title: {
-                  display: true,
-                  text: this.xChartTitle,
-                  color: '#704CEB',
-                  font: {
-                      family: 'Volte-Bold',
-                      size: 14,
-                      weight: '700',
-                      lineHeight: 1.2,
                   },
                   padding: {top: 20, left: 0, right: 0, bottom: 0}
+              },
+              beginAtZero: true,
+              grid: {
+                display: true,
+              },
+              ticks: {
+                color: '#704CEB',
+                font: {
+                  family: 'Volte-Regular',
+                  size: 12,
+                  weight: '500',
+                  lineHeight: 1.2,
                 },
-                grid: {
-                  display: false,
-                },
-                ticks: {
-                  color: '#704CEB',
-                  font: {
-                    family: 'Volte-Regular',
-                    size: 12,
-                    weight: '500',
-                    lineHeight: 1.2,
-                  },
-                }
               }
             },
-          }
-        });
+            x: {
+              display: true,
+              title: {
+                display: true,
+                text: this.xChartTitle,
+                color: '#704CEB',
+                font: {
+                    family: 'Volte-Bold',
+                    size: 14,
+                    weight: '700',
+                    lineHeight: 1.2,
+                },
+                padding: {top: 20, left: 0, right: 0, bottom: 0}
+              },
+              grid: {
+                display: false,
+              },
+              ticks: {
+                color: '#704CEB',
+                font: {
+                  family: 'Volte-Regular',
+                  size: 12,
+                  weight: '500',
+                  lineHeight: 1.2,
+                },
+              }
+            }
+          },
+        }
+      });
 
       if(ctx)
       // The following only works with ChartJS 2.x or 3.x.
@@ -163,15 +168,13 @@ export class cardHoraUsoCampusComponent implements OnInit {
           console.log(firstPoint.index);
           console.log(label);
           console.log(value);
-      }
-        // const res = chart.getElementAtEvent(evt);
-        // if (res.length === 0) {
-        //   return;
-        // }
-        // alert('You clicked on ' + chart.data.labels[res[0]._index]);
+        }
+          // const res = chart.getElementAtEvent(evt);
+          // if (res.length === 0) {
+          //   return;
+          // }
+          // alert('You clicked on ' + chart.data.labels[res[0]._index]);
       };
-
-
     }
 
     verMas() {

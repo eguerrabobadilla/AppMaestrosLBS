@@ -1,11 +1,14 @@
 <ion-content>
-  <h1 style="font-family: Volte-Regular; color: #704CEB; margin-top: 25px;">Estadisticas: <strong style="font-family: Volte-Bold;">Campus.</strong></h1>
+  <h1 style="font-family: Volte-Regular; color: #704CEB; margin-top: 25px;">Estadísticas: <strong style="font-family: Volte-Bold;">Campus.</strong></h1>
   
   <ion-grid>
       <ion-row class="main-row">
           <ion-col #horasUsoCampusCol >
               <!-- Hora de uso de por campus -->
-                  <card-hora-uso-campus [type]="'Campus'"></card-hora-uso-campus>
+                  <card-hora-uso-campus 
+                    [type]="'Campus'"
+                    >
+                  </card-hora-uso-campus>
   
           </ion-col>
       </ion-row>
