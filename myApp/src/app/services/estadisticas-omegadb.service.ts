@@ -10,8 +10,8 @@ export class EstadisticasOmegaService {
 
 	private url: string = 'https://pruebasnek-default-rtdb.firebaseio.com';
 	// private urlOmega: string = 'https://www.alfalbs.app/ApiOmega';
-	 //private urlOmega: string ='http://172.16.12.40:5000';
-	private urlOmega: string ='https://dev.alfalbs.app/ApiOmega';
+	 private urlOmega: string ='http://192.168.20.15:5000';
+	// private urlOmega: string ='https://dev.alfalbs.app/ApiOmega';
 	ws: string = 'api/ReportesPerseus';
 
   	constructor(private http: HttpClient) { }
@@ -31,6 +31,10 @@ export class EstadisticasOmegaService {
 	
 	getCampus() {
 		return this.http.get<Campus[]>(`${this.urlOmega}/${this.ws}/getCampus`);
+	}
+	
+	getOneCampus(campusId: number) {
+		return this.http.get<Campus[]>(`${this.urlOmega}/${this.ws}/getOneCampus/${campusId}`);
 	}
 
 	getTopCampusData(datosLibro: any, options?: any) {

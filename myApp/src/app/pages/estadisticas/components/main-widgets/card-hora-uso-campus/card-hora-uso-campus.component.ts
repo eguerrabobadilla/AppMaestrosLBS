@@ -21,6 +21,8 @@ export class cardHoraUsoCampusComponent implements OnInit {
   @Input() horasUsoCampusCol!: IonCol;
   @Input() type: string;
   @Input() chartData: { labels: string[]; data: number[] };
+  @Input() campus: string;
+
   @Output() verMasEvent = new EventEmitter<void>();
   
     constructor(
@@ -50,18 +52,18 @@ export class cardHoraUsoCampusComponent implements OnInit {
       
       console.log(this.type);
 
+      this.labels = this.chartData.labels;
+      this.data = this.chartData.data;
       if(this.type == 'General') {
         
         console.log(this.chartData);
-        this.labels = this.chartData.labels;
-        this.data = this.chartData.data;
         this.title = "Horas de Uso por Campus.";
         this.xChartTitle = "Campus";
       }
       else if (this.type == 'Campus') {
-        this.labels = this.chartCampus.labels;
-        this.data = this.chartCampus.data;
-        this.title = "Horas de Uso: Campus Durango.";
+        // this.labels = this.chartCampus.labels;
+        // this.data = this.chartCampus.data;
+        this.title = "Horas de Uso: Campus "+this.campus+".";
         this.xChartTitle = "Libros"
       }
 

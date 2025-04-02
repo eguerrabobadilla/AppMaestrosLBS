@@ -1,12 +1,15 @@
 <ion-content>
   <h1 style="font-family: Volte-Regular; color: #704CEB; margin-top: 25px;">Estadísticas: <strong style="font-family: Volte-Bold;">Campus.</strong></h1>
   
-  <ion-grid>
+  <ion-grid *ngIf="widgetsLoaded;">
       <ion-row class="main-row">
           <ion-col #horasUsoCampusCol >
               <!-- Hora de uso de por campus -->
                   <card-hora-uso-campus 
+                    *ngIf="horasLibros"
                     [type]="'Campus'"
+                    [chartData]="horasLibros"
+                    [campus]="campusInfo.Nombre"
                     >
                   </card-hora-uso-campus>
   
@@ -57,7 +60,7 @@
                                 </span>
                               </ion-col>
                               <ion-col>
-                                <img class="libro-portada" src={{row.column1.PortadaLibro}}>
+                                <img class="libro-portada" src="https://www.alfalbs.app/ApiOmega/covers/{{row.column1.PortadaLibro}}">
                               </ion-col>
                               <ion-col offset="1">
                                 <div class="libro-info-container">
@@ -72,7 +75,7 @@
                                 </div>
                               </ion-col>
                               <ion-col style="text-align: end; align-self: flex-end;">
-                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro')"></btn-ver-mas>
+                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro', row.column1.id)"></btn-ver-mas>
                               </ion-col>
                             </ion-row>
                           </ion-grid>
@@ -83,11 +86,11 @@
                             <ion-row >
                               <ion-col size="1">
                                 <span class="index">
-                                  {{row.column1.id}}
+                                  {{row.column2.id}}
                                 </span>
                               </ion-col>
                               <ion-col>
-                                <img class="libro-portada" src={{row.column2.PortadaLibro}}>
+                                <img class="libro-portada" src="https://www.alfalbs.app/ApiOmega/covers/{{row.column2.PortadaLibro}}">
                               </ion-col>
                               <ion-col offset="1">
                                 <div class="libro-info-container">
@@ -99,11 +102,10 @@
                                       {{row.column2.GradoLibro | gradosSuffix: 'escolaridad'}} {{row.column2.EscolaridadLibro}}
                                     </div>
                                   </div>
-                                  <!-- <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="EstadisticasPage.navigateToRoute('detalle-libro')"></btn-ver-mas> -->
                                 </div>
                               </ion-col>
                               <ion-col style="text-align: end; align-self: flex-end;">
-                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro')"></btn-ver-mas>
+                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro', row.column2.id)"></btn-ver-mas>
                               </ion-col>
                             </ion-row>
                           </ion-grid>
@@ -114,11 +116,11 @@
                             <ion-row >
                               <ion-col size="1">
                                 <span class="index">
-                                  {{row.column1.id}}
+                                  {{row.column3.id}}
                                 </span>
                               </ion-col>
                               <ion-col>
-                                <img class="libro-portada" src={{row.column3.PortadaLibro}}>
+                                <img class="libro-portada" src="https://www.alfalbs.app/ApiOmega/covers/{{row.column3.PortadaLibro}}">
                               </ion-col>
                               <ion-col offset="1">
                                 <div class="libro-info-container">
@@ -133,7 +135,7 @@
                                 </div>
                               </ion-col>
                               <ion-col style="text-align: end; align-self: flex-end;">
-                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro')"></btn-ver-mas>
+                                <btn-ver-mas class="libro-ver-mas-btn" [size]="'small'" (click)="navigateToRoute('detalle-libro', row.column3.id)"></btn-ver-mas>
                               </ion-col>
                             </ion-row>
                           </ion-grid>

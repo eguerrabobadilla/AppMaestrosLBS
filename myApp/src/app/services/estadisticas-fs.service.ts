@@ -89,80 +89,60 @@ export class EstadisticasFsService {
 		return(horasCampus);
 	}
 
-	// Al final creo que sale mejor separar la función en dos
-	// dejar la de get top campus como antes (que es lo que esta en main-dashboard)
-	async getTopCampus(modo: string, campusId?: string) {
-		console.log(modo);
+	/* Tabla main dashboard */
+	async getTopCampus() {
 		const transformedData: { [key: number]: { LibroId: number; Horas: number } } = {};
 
-		if(modo === 'main-dashboard'){
-			console.log('dashboard');
-			this.topCampusData = await firstValueFrom(this.getBestRankedBooks('topRankings'));
+		console.log('dashboard');
+		this.topCampusData = await firstValueFrom(this.getBestRankedBooks('topRankings'));
 
-			for (let key in this.topCampusData) {
-				console.log(this.topCampusData);
-				console.log(typeof(key));
-				console.log(key);
-				console.log(this.topCampusData[key]);
-				console.log(typeof(this.topCampusData));
-				console.log(typeof(this.topCampusData[key]));
-				console.log(this.topCampusData[key].libroId);
-				console.log(parseInt(this.topCampusData[key].libroId));
-				// if (typeof())
-				transformedData[Number(key)] = {
-					LibroId: parseInt(this.topCampusData[key].libroId),
-					Horas: 2
-				};
-			}
-		}
-		else if (modo === 'estadisticas-campus'){
-			console.log('stat campus');
-			this.topCampusData = await firstValueFrom(this.getBestRankedBooks('general', campusId));
-			for (let key in this.topCampusData) {
-				console.log(this.topCampusData);
-				console.log(typeof(key));
-				console.log(key);
-				console.log(this.topCampusData[key]);
-				console.log(typeof(this.topCampusData));
-				console.log(typeof(this.topCampusData[key]));
-				this.topCampusData[key].forEach(libro => {
-					console.log(libro);
-					console.log(libro.libroId);
-					transformedData[Number(key)] = {
-						LibroId: parseInt(libro.libroId),
-						Horas: libro.horas
-					};
-				  });
-				console.log(this.topCampusData[key].libroId);
-				console.log(parseInt(this.topCampusData[key].libroId));
-				// if (typeof())
-			}
+		for (let key in this.topCampusData) {
+			transformedData[Number(key)] = {
+				LibroId: parseInt(this.topCampusData[key].libroId),
+				Horas: 2
+			};
 		}
 
-		console.log(this.topCampusData);
-		// const transformedData: { [key: number]: { LibroId: number; Horas: number } } = {};
-
-		// for (let key in this.topCampusData) {
-		// 	console.log(this.topCampusData);
-		// 	console.log(typeof(key));
-		// 	console.log(key);
-		// 	console.log(this.topCampusData[key]);
-		// 	console.log(typeof(this.topCampusData));
-		// 	console.log(typeof(this.topCampusData[key]));
-		// 	console.log(this.topCampusData[key].libroId);
-		// 	console.log(parseInt(this.topCampusData[key].libroId));
-		// 	// if (typeof())
-		// 	transformedData[Number(key)] = {
-		// 		LibroId: parseInt(this.topCampusData[key].libroId),
-		// 		Horas: 2
-		// 	};
-		// }
+		const body = { CampusLibros: transformedData };
 		
-		console.log(transformedData);
+		// console.log(body);
+
+		const response = await firstValueFrom(this.estadisticasOmegaService.getTopCampusData(body, {
+            headers: { 'Content-Type': 'application/json' }
+        	})
+		);
+
+		// console.log(response);
+
+		return response;
+	}
+
+	// Función que trae la data de los libros para un campus para llenar la tabla en estadisticas-campus 
+	async getTopLibros(campusId: string) {
+		// console.log('stat campus');
+		const transformedData: { [key: number]: { LibroId: number; Horas: number } } = {};
+		this.topCampusData = await firstValueFrom(this.getBestRankedBooks('general', campusId));
+		for (let key in this.topCampusData) {
+			let x = 0;
+			this.topCampusData[key].forEach(libro => {
+				// console.log(libro);
+				// console.log(libro.libroId);
+				transformedData[Number(x)] = {
+					LibroId: parseInt(libro.libroId),
+					Horas: libro.horas
+				};
+				x++;
+			  });
+			// console.log(this.topCampusData[key].libroId);
+			// console.log(parseInt(this.topCampusData[key].libroId));
+			// if (typeof())
+		}
+		// console.log(this.topCampusData);		
+		// console.log("Transformed data:", transformedData);
 		
 		const body = { CampusLibros: transformedData };
 		
-		console.log(body);
+		// console.log(body);
 
 		const response = await firstValueFrom(this.estadisticasOmegaService.getTopCampusData(body, {
             headers: { 'Content-Type': 'application/json' }

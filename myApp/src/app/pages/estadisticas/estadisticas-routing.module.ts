@@ -25,13 +25,25 @@ const routes: Routes = [
   },
   {
     path: 'detalle-libro',
-    title: 'Detalle del libro',
+    title: 'Detalles del libro',
+    component: detalleLibroComponent,
+  },
+  {
+    path: 'estadisticas-campus/detalle-libro',
+    title: 'Detalles del libro',
     component: detalleLibroComponent,
   },
   {
     path: 'estadisticas-campus',
     title: 'Estadisticas campus',
     component: estadisticasCampusComponent,
+    // children: [
+    //   {
+    //     path: 'detalle-libro',
+    //     title: 'Detalles del libro', 
+    //     component: detalleLibroComponent,
+    //   },
+    // ],
   },
   {
     path: 'elegir-campus',

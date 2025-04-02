@@ -48,7 +48,7 @@ export class EstadisticasPage implements OnInit {
       
       const [horasData, topCampusData] = await Promise.all([
         this.EstadisticasFsService.getHorasCampus(),
-        this.EstadisticasFsService.getTopCampus('main-dashboard'),
+        this.EstadisticasFsService.getTopCampus(),
         
       ]);
 
@@ -102,7 +102,7 @@ export class EstadisticasPage implements OnInit {
 
   async testTopCampus() {
     // this.topCampusData = await firstValueFrom(this.EstadisticasFsService.getBestRankedBooks());
-    this.topCampusData = await (this.EstadisticasFsService.getTopCampus('main-dashboard'));
+    this.topCampusData = await (this.EstadisticasFsService.getTopCampus());
     console.log(this.topCampusData);
     
   }

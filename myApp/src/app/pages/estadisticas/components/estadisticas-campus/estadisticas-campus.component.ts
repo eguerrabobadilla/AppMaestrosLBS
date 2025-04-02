@@ -1,7 +1,7 @@
 import { EstadisticasPage } from './../../estadisticas.page';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, Routes } from '@angular/router';
-import { Subject } from 'rxjs';
+import { firstValueFrom, Subject } from 'rxjs';
 import { EstadisticasFsService } from 'src/app/services/estadisticas-fs.service';
 import { EstadisticasOmegaService } from 'src/app/services/estadisticas-omegadb.service';
 
@@ -271,10 +271,12 @@ export class estadisticasCampusComponent implements OnInit {
   ];
 
   campusId: number;
+  campusInfo: any;
 
   porcentajeUso: number;
   valorDeUsoTxt: string;
-  valorDeUsoColor: string;
+  valorDeUsoColor: string
+  widgetsLoaded = false;
   
   array1: any[] = [];
   array2: any[] = [];
@@ -282,24 +284,43 @@ export class estadisticasCampusComponent implements OnInit {
   rows: any[] = [];
   arrayWithId: any[] = [];
 
-  librosData: {};
+  librosData: any;
+  horasLibros = { labels: [], data: [] } as { labels: string[]; data: number[] };
+
   
-  ngOnInit() { 
+  async ngOnInit() { 
 
   // Leer CampusId
   this.route.queryParams.subscribe(params => {
-    console.log(params); 
-
     this.campusId = params['CampusId'];
-    console.log('CampusId:', this.campusId);
-    this.testCampusBookList();
   });
 
-    // Añadir un campo `id` basado en la posición
-  this.arrayWithId = this.CampusTops.map((item, index) => ({
+  /* Data para el chart de hotas libros*/
+
+  const [librosData] = await Promise.all([
+    this.EstadisticasFsService.getTopLibros(String(this.campusId)),
+    
+  ]);
+
+  this.campusInfo = await firstValueFrom(this.estadisticasOmegaService.getOneCampus(this.campusId));
+  console.log(this.campusInfo);
+
+  this.librosData = librosData;
+
+  this.librosData.forEach(libro => {
+    this.horasLibros.labels.push(libro.Libro);
+    this.horasLibros.data.push(libro.Horas);
+    
+  });
+
+  /* Tabla */
+
+  this.arrayWithId = this.librosData.map((item, index) => ({
     id: index + 1, 
     ...item        
   }));
+
+  console.log(this.arrayWithId)
 
   for (let i = 0; i < this.arrayWithId.length; i += 3) {
     this.rows.push({
@@ -324,6 +345,9 @@ export class estadisticasCampusComponent implements OnInit {
     });
   });
 
+  console.log(this.rows);
+  this.widgetsLoaded = true;
+
   // this.oTable.datatable(empty, colnames = rep("", ncol(empty)),options=list(ordering=F))
 
   // Cuando me suscriba para obtener la información, usar el trigger para pintar la tabla
@@ -337,20 +361,34 @@ export class estadisticasCampusComponent implements OnInit {
     this.oTable.search(searchValue).draw();
   }
 
-  navigateToRoute(route: string, queryKey?: string, queryParams?: string){
+  navigateToRoute(route: string, id: number){
     console.log(route)
     console.log(this.route)
-    
-    const params = queryKey ? { [queryKey]: queryParams } : {};
+    // const parametros = `{campus:'${this.campusInfo.Nombre}',language:'punjabi'}`
 
-    this.router.navigate([route], { relativeTo: this.route, queryParams: params });
+    console.log(this.arrayWithId)
+    console.log(typeof(this.arrayWithId))
+
+    const libroEncontrado = this.arrayWithId.find(libro => libro.id === id);
+
+    console.log(libroEncontrado)
+    
+    // const params = queryKey ? { [queryKey]: queryParams } : {};
+
+    this.router.navigate([route], { 
+      relativeTo: this.route, 
+      // queryParams: params 
+      state:{
+        data: libroEncontrado
+      }
+    });
     // this.router.navigate(['/home/estadisticas/'+route]);
   }
 
   
   async testCampusBookList() {
     // this.topCampusData = await firstValueFrom(this.EstadisticasFsService.getBestRankedBooks());
-    this.librosData = await (this.EstadisticasFsService.getTopCampus('estadisticas-campus', String(this.campusId)));
+    this.librosData = await (this.EstadisticasFsService.getTopLibros(String(this.campusId)));
     console.log(this.librosData);
     
   }

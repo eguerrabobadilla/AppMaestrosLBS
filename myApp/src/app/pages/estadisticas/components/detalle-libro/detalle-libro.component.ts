@@ -18,12 +18,16 @@ export class detalleLibroComponent implements OnInit {
 
     // @Input() libro: any;
 
+    libroData: any;
+
     constructor(
       private router: Router,
       public dataService: DataService,
       public FolderComponent: FolderComponent,
       private sanitizer: DomSanitizer,
-    ) { }
+      
+    ) {
+     }
 
     libro: any = {
         "Campus": "Saltillo",
@@ -65,6 +69,9 @@ export class detalleLibroComponent implements OnInit {
     valorDeUsoColor: string;
     
     ngOnInit() { 
+
+        this.libroData = this.router.getCurrentNavigation()?.extras.state?.['data'] ?? {};
+        console.log(this.libroData);
 
         this.porcentajeUso = Math.round((this.libro.DescargasLibro / this.libro.Usuarios) * 100);
         const diff = 100 - this.porcentajeUso;
